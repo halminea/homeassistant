@@ -37,13 +37,14 @@
     data_template:
       entity_id: input_number.b1_temp
       value: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
-  - data: # Vaihdetaan värilämpötila.
+  - service: light.turn_on # Vaihdetaan värilämpötila.
+    data: 
       entity_id: 
       - light.tradfri_bulb
       - light.tradfri_bulb_2
       kelvin: 4000
       transition: 1
-    service: light.turn_on
+    
 
 - id: '1570794048621'
   alias: kicthen_light_temp_off
@@ -67,3 +68,30 @@
       - light.tradfri_bulb_2
       transition: 1
     service: light.turn_on
+
+- id: "1570794048622"
+  alias: "kitchen_living_bulb_temp_3"
+  description: Säädä olohuoneen valojen värilämpötila sytytettäessä ne, jos keittiön valo päällä
+  trigger: # Sytytettäessä olohuoneen valot
+  - domain: light
+    entity_id: 
+    - light.tradfri_bulb
+    - light.tradfri_bulb_2
+    platform: device
+    type: turned_on
+  condition: # Jos keittiön valot päällä
+    condition: state
+    entity_id: light.tradfri_driver
+    state: "on"
+  action: 
+  - service: input_number.set_value # Tallennetaan ensin nykyinen värilämpötila
+    data_template:
+      entity_id: input_number.b1_temp
+      value: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
+  - service: light.turn_on # Säädetään värilämpötila
+    data:
+      kelvin: 4000
+      entity_id:
+      - light.tradfri_bulb
+      - light.tradfri_bulb_2
+
