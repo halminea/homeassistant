@@ -117,5 +117,6 @@
           before_offset: "-1:00:00"
   action: # Laitetaan valo 30 % teholle.
   - service: light.turn_on
-    entity_id: light.tradfri_bulb_5
-    brightness: 76
+    data:
+      brightness: 76
+      entity_id: light.tradfri_bulb_5
