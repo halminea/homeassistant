@@ -74,9 +74,7 @@
   description: Säädä olohuoneen valojen värilämpötila sytytettäessä ne, jos keittiön valo päällä
   trigger: # Sytytettäessä olohuoneen valot
   - domain: light
-    entity_id: 
-    - light.tradfri_bulb
-    - light.tradfri_bulb_2
+    entity_id: light.tradfri_bulb
     platform: device
     type: turned_on
   condition: # Jos keittiön valot päällä
