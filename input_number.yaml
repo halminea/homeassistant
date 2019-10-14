@@ -1,0 +1,7 @@
+b1_temp:
+ name: Bulb 1 temperature
+ initial: 285
+ min: 250
+ max: 454
+ step: 1
+

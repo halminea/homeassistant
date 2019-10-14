@@ -1,0 +1,57 @@
+- id: '1570558248746'
+  alias: living_room_bulb_temp
+  description: Olohuoneen värilämpötilan säätö
+  trigger:
+    platform: state
+    entity_id: input_number.b1_temp
+  condition:
+  - condition: state
+    entity_id: light.tradfri_bulb
+    state: 'on'
+  action:
+  - service: light.turn_on
+    data_template:
+      entity_id: light.tradfri_bulb
+      color_temp: '{{ states.input_number.b1_temp.state | int }}'
+      transition: 1
+  - service: light.turn_on
+     data_template:
+       entity_id: light.tradfri_bulb_2
+       color_temp: ''{{ states.input_number.b1_temp.state | int }}'
+
+- id: '1570783783314'
+  alias: kitchen_temp_adj
+  description: Olohuoneen värilämpötilan säätö keittiön mukaan
+  trigger:
+  - device_id: 7d6e6f5c533448ee9c82544a8cec7c25
+    domain: light
+    entity_id: light.tradfri_driver
+    platform: device
+    type: turned_on
+  action:
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.b1_temp
+      value: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
+  - data:
+      entity_id: light.tradfri_bulb
+      kelvin: 4000
+      transition: 1
+    service: light.turn_on
+
+- id: '1570794048621'
+  alias: kicthen_light_temp_off
+  description: Säädä olohuoneen valoja sammutettaessa keittiön valot
+  trigger:
+  - device_id: 7d6e6f5c533448ee9c82544a8cec7c25
+    domain: light
+    entity_id: light.tradfri_driver
+    platform: device
+    type: turned_off
+  condition: []
+  action:
+    data_template:
+      color_temp: '{{ states.input_number.b1_temp.state | int }}'
+      entity_id: light.tradfri_bulb
+      transition: 1
+    service: light.turn_on
