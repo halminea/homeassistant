@@ -1,44 +1,53 @@
-- id: '1570558248746'
+- id: '1570558248746' 
   alias: living_room_bulb_temp
   description: Olohuoneen värilämpötilan säätö
+  # Vaihdetaan olohuoneen värilämpötilaa silloin, kun input_numberia säädetään.
   trigger:
     platform: state
     entity_id: input_number.b1_temp
-  condition:
+  condition: # Toteutetaan vain, jos lamppu on päällä, jottei lamppu mene päälle värilämpötilasäädön takia.
   - condition: state
     entity_id: light.tradfri_bulb
     state: 'on'
   action:
   - service: light.turn_on
     data_template:
-      entity_id:
+      entity_id: # Kummatkin olohuoneen lamput
       - light.tradfri_bulb
       - light.tradfri_bulb_2
       color_temp: '{{ states.input_number.b1_temp.state | int }}'
-      transition: 1
+      transition: 1 # Sekunnin siirtymä
 
 - id: '1570783783314'
   alias: kitchen_temp_adj
   description: Olohuoneen värilämpötilan säätö keittiön mukaan
+  # Aktivoituu, kun keittiön valo sytytetään. Olohuoneen värilämpötila vaihtuu 4000 K.
   trigger:
   - device_id: 7d6e6f5c533448ee9c82544a8cec7c25
     domain: light
     entity_id: light.tradfri_driver
     platform: device
     type: turned_on
-  action:
-  - service: input_number.set_value
+  condition: # Niin ikään toteutetaan vain, jos valo on jo päällä.
+    condition: state
+    entity_id: light.tradfri_bulb
+    state: "on"
+  action: 
+  - service: input_number.set_value # Tallennetaan ensin nykyinen värilämpötila
     data_template:
       entity_id: input_number.b1_temp
       value: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
-  - data:
-      entity_id: light.tradfri_bulb
+  - data: # Vaihdetaan värilämpötila.
+      entity_id: 
+      - light.tradfri_bulb
+      - light.tradfri_bulb_2
       kelvin: 4000
       transition: 1
     service: light.turn_on
 
 - id: '1570794048621'
   alias: kicthen_light_temp_off
+  # Edellinen käänteisesti
   description: Säädä olohuoneen valoja sammutettaessa keittiön valot
   trigger:
   - device_id: 7d6e6f5c533448ee9c82544a8cec7c25
@@ -46,10 +55,15 @@
     entity_id: light.tradfri_driver
     platform: device
     type: turned_off
-  condition: []
+  condition:
+    condition: state
+    entity_id: light.tradfri_bulb
+    state: "on"
   action:
     data_template:
       color_temp: '{{ states.input_number.b1_temp.state | int }}'
-      entity_id: light.tradfri_bulb
+      entity_id: 
+      - light.tradfri_bulb
+      - light.tradfri_bulb_2
       transition: 1
     service: light.turn_on
