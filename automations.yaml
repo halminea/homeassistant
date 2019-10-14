@@ -11,7 +11,7 @@
   action:
   - service: light.turn_on
     data_template:
-      entities:
+      entity_id:
       - light.tradfri_bulb
       - light.tradfri_bulb_2
       color_temp: '{{ states.input_number.b1_temp.state | int }}'
