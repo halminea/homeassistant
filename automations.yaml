@@ -73,11 +73,11 @@
   alias: "kitchen_living_bulb_temp_3"
   description: Säädä olohuoneen valojen värilämpötila sytytettäessä ne, jos keittiön valo päällä
   trigger: # Sytytettäessä olohuoneen valot
-  - domain: light
-    device_id: 7d6e6f5c533448ee9c82544a8cec7c25
-    entity_id: light.tradfri_driver
-    platform: device
-    type: turned_on
+  - entity_id: 
+    - light.tradfri_bulb
+    - light.tradfri_bulb_2
+    platform: state
+    to: "on"
   condition: # Jos keittiön valot päällä
     condition: state
     entity_id: light.tradfri_driver
