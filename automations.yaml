@@ -151,6 +151,10 @@
   - service: light.turn_on
     data_template:
       brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+  - service: light.turn_on
+    data_template:
       color_temp: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
       entity_id: light.tradfri_bulb_5
       transition: 1
@@ -169,6 +173,10 @@
   - service: light.turn_on
     data_template:
       brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+  - service: light.turn_on
+    data_template:
       color_temp: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
       entity_id: light.tradfri_bulb_5
       transition: 1
@@ -176,15 +184,17 @@
 - id: "5"
   alias: "hall_poweroff_together_with_living_room"
   description: Sammuttaa eteisen valon, kun olohuoneen valo sammutetaan.
-  trigger:
+  trigger: # Aktivoituu sammutettaessa olohuone
   - entity_id: light.tradfri_bulb
     platform: state
     to: "off"
   action:
-  - service: light.turn_off
+  - service: light.turn_on # Ensin himmennetään nollaan, jotta saadaan siirtymä
     data:
+      brightness: 0
       entity_id: light.tradfri_bulb_5
       transition: 1
-
-
-# TODO: Himmennä / sammuta eteinen olohuoneen mukana.
+  - delay: 00:00:02 
+  - service: light.turn_off # Virta pois, jotta tila oikein.
+    data:
+      entity_id: light.tradfri_bulb_5
