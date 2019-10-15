@@ -102,12 +102,11 @@
     platform: state
     to: "on"
   condition: # Edellyttää, että olohuoneessa ei valoja ja tapahtuu pimeän aikaan
-    condition:
-    - condition: "state"
-      entity_id: light.tradfri_bulb
-      state: "off"
-    - condition: template
-      value_template: '{{ state_attr("sun.sun", "elevation") < -6 }}' # Katsotaan auringon korkeudesta, koska aktivoituu.
+  - condition: "state"
+    entity_id: light.tradfri_bulb
+    state: "off"
+  - condition: template
+    value_template: '{{ state_attr("sun.sun", "elevation") < -6 }}' # Katsotaan auringon korkeudesta, koska aktivoituu.
   action: # Laitetaan valo 30 % teholle.
   - service: light.turn_on
     data:
