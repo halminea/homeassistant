@@ -161,7 +161,6 @@
   trigger: # Aktivoituu, kun olohuoneen valoa säädetään
   - entity_id: light.tradfri_bulb
     platform: state
-    to: "on"
   condition: # Vain kun eteisen valo on päällä, jottei sitä sytytetä tämän takia.
   - condition: state
     entity_id: light.tradfri_bulb_5
