@@ -101,22 +101,16 @@
   - entity_id: light.tradfri_bulb_5
     platform: state
     to: "on"
-  condition: # Edellyttää, että olohuoneessa ei valoja ja tapahtuu välillä [tunti auringon laskun jälkeen, tunti ennen auringonnousua]
+  condition: # Edellyttää, että olohuoneessa ei valoja ja tapahtuu pimeän aikaan
     condition: and
     conditions: 
       - condition: "state"
         entity_id: light.tradfri_bulb
         state: "off"
-      - condition: or # Auringonnousuehdot or-tyyppiset
-        conditions:
-        - condition: sun 
-          after: sunset
-          after_offset: "1:00:00"
-        - condition: sun
-          before: sunrise
-          before_offset: "-1:00:00"
+      - condition: template
+        value_template: '{{ state_attr("sun.sun", "elevation") < -6 }}' # Katsotaan auringon korkeudesta, koska aktivoituu.
   action: # Laitetaan valo 30 % teholle.
   - service: light.turn_on
     data:
-      brightness: 76
+      brightness: 76 
       entity_id: light.tradfri_bulb_5
