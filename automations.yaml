@@ -112,6 +112,7 @@
     data:
       brightness: 76 
       entity_id: light.tradfri_bulb_5
+      transition: 1
 
 - id: "2"
   alias: "hall_non_dimming"
@@ -131,6 +132,7 @@
     data:
       brightness: 254 
       entity_id: light.tradfri_bulb_5
+      transition: 1
 
 - id: "3"
   alias: "hall_dimming_based_on_living_room"
@@ -148,5 +150,6 @@
     data_template:
       brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
       entity_id: light.tradfri_bulb_5
+      transition: 1
 
 # TODO: Himmennä / sammuta eteinen olohuoneen mukana.
