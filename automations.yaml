@@ -107,10 +107,11 @@
     state: "off"
   - condition: template
     value_template: '{{ state_attr("sun.sun", "elevation") < -6 }}' # Katsotaan auringon korkeudesta, koska aktivoituu.
-  action: # Laitetaan valo 30 % teholle.
+  action: # Laitetaan valo 30 % teholle. Värilämpötila 4000 K
   - service: light.turn_on
     data:
       brightness: 76 
+      kelvin: 4000
       entity_id: light.tradfri_bulb_5
       transition: 1
 
@@ -127,10 +128,11 @@
     state: "off"
   - condition: template
     value_template: '{{ state_attr("sun.sun", "elevation") > -6 }}' # Katsotaan auringon korkeudesta, koska aktivoituu.
-  action: # Laitetaan valo 100 % teholle.
+  action: # Laitetaan valo 100 % teholle. Värilämpötila 4000 K
   - service: light.turn_on
     data:
       brightness: 254 
+      kelvin: 4000
       entity_id: light.tradfri_bulb_5
       transition: 1
 
@@ -145,11 +147,45 @@
   - condition: "state"
     entity_id: light.tradfri_bulb
     state: "on"
-  action: # Laitetaan valo samalle teholle
+  action: # Laitetaan valo samalle teholle ja värilämpotilalle
   - service: light.turn_on
     data_template:
       brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
+      color_temp: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
       entity_id: light.tradfri_bulb_5
       transition: 1
+
+- id: "4"
+  alias: "hall_dimming_based_on_living_room_dimming"
+  description: Muuttaa eteisen kirkkautta, kun olohuoneen kirkkautta / värilämpötilaa muutetaan.
+  trigger: # Aktivoituu, kun olohuoneen valoa säädetään
+  - entity_id: light.tradfri_bulb
+    platform: state
+    to: "on"
+  condition: # Vain kun eteisen valo on päällä, jottei sitä sytytetä tämän takia.
+  - condition: state
+    entity_id: light.tradfri_bulb_5
+    state: "on"
+  action: # Valo samalle teholle ja värilämpötilalle
+  - service: light.turn_on
+    data_template:
+      brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
+      color_temp: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+
+- id: "5"
+  alias: "hall_poweroff_together_with_living_room"
+  description: Sammuttaa eteisen valon, kun olohuoneen valo sammutetaan.
+  trigger:
+  - entity_id: light.tradfri_bulb
+    platform: state
+    to: "off"
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+
 
 # TODO: Himmennä / sammuta eteinen olohuoneen mukana.
