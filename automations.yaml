@@ -112,3 +112,41 @@
     data:
       brightness: 76 
       entity_id: light.tradfri_bulb_5
+
+- id: "2"
+  alias: "hall_non_dimming"
+  description: "Pitää huolen, että eteisessä ei ole himmennystä päivällä"
+  trigger: #Aktivoituu, kun eteisen valo syttyy
+  - entity_id: light.tradfri_bulb_5
+    platform: state
+    to: "on"
+  condition: # Suoritetaan vain, jos olohuoneen valo on pois päältä ja aurinko on riittävän ylhääläl
+  - condition: "state"
+    entity_id: light.tradfri_bulb
+    state: "off"
+  - condition: template
+    value_template: '{{ state_attr("sun.sun", "elevation") > -6 }}' # Katsotaan auringon korkeudesta, koska aktivoituu.
+  action: # Laitetaan valo 100 % teholle.
+  - service: light.turn_on
+    data:
+      brightness: 254 
+      entity_id: light.tradfri_bulb_5
+
+- id: "3"
+  alias: "hall_dimming_based_on_living_room"
+  description: "Laittaa eteiseen saman kirkkauden kuin olohuoneessa, jos valo päällä"
+  trigger: # Aktivoituu, kun eteisen valo syttyy
+  - entity_id: light.tradfri_bulb_5
+    platform: state
+    to: "on"
+  condition: # Suoritetaan vain, jos olohuoneen valo on päällä
+  - condition: "state"
+    entity_id: light.tradfri_bulb
+    state: "on"
+  action: # Laitetaan valo samalle teholle
+  - service: light.turn_on
+    data:
+      brightness: states.light.tradfri_bulb.attributes.brightness
+      entity_id: light.tradfri_bulb_5
+
+# TODO: Himmennä / sammuta eteinen olohuoneen mukana.
