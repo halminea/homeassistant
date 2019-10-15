@@ -145,8 +145,8 @@
     state: "on"
   action: # Laitetaan valo samalle teholle
   - service: light.turn_on
-    data:
-      brightness: states.light.tradfri_bulb.attributes.brightness
+    data_template:
+      brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
       entity_id: light.tradfri_bulb_5
 
 # TODO: Himmennä / sammuta eteinen olohuoneen mukana.
