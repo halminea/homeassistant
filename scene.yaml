@@ -1,0 +1,12 @@
+- name: Movie
+  entities:
+    light.tradfri_bulb:
+      state: on
+      brightness: 1
+      color_temp: 454
+      transition: 20
+    light.tradfri_bulb_2:
+      state: on
+      brightness: 1
+      color_temp: 454
+      transition: 20

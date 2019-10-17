@@ -13,4 +13,5 @@ tts:
 automation: !include automations.yaml
 script: !include scripts.yaml
 input_number: !include input_number.yaml
+scene: !include scene.yaml
 discovery:
