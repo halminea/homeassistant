@@ -180,3 +180,23 @@
       color_temp: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
       entity_id: light.tradfri_bulb_5
       transition: 1
+
+- id: '15705582487321' 
+  alias: living_room_bulb_bright
+  description: Olohuoneen kirkkauden säätö
+  # Vaihdetaan olohuoneen valojen kirkkautta silloin, kun input_numberia säädetään.
+  trigger:
+    platform: state
+    entity_id: input_number.b1_bright
+  condition: # Toteutetaan vain, jos lamppu on päällä, jottei lamppu mene päälle värilämpötilasäädön takia.
+  - condition: state
+    entity_id: light.tradfri_bulb
+    state: 'on'
+  action:
+  - service: light.turn_on
+    data_template:
+      entity_id: # Kummatkin olohuoneen lamput
+      - light.tradfri_bulb
+      - light.tradfri_bulb_2
+      color_temp: '{{ states.input_number.b1_bright.state | int }}'
+      transition: 1 # Sekunnin siirtymä
