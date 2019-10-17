@@ -198,5 +198,5 @@
       entity_id: # Kummatkin olohuoneen lamput
       - light.tradfri_bulb
       - light.tradfri_bulb_2
-      color_temp: '{{ states.input_number.b1_bright.state | int }}'
+      brightness: '{{ states.input_number.b1_bright.state | int }}'
       transition: 1 # Sekunnin siirtymä
