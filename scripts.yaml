@@ -1,0 +1,22 @@
+movie:
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb
+      brightness: 1
+      transition: 20
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb
+      color_temp: 454
+      transition: 20
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb_2
+      brightness: 1
+      transition: 20
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb_2
+      color_temp: 454
+      transition: 20
