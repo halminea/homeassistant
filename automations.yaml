@@ -232,8 +232,9 @@
   alias: First morning # Valojen aamutilan sytytys
   trigger: # Sytytettäessä olohuoneen valot
     platform: state
-    entity_id: light.tradfri_bulb
-    to: 'on'
+    entity_id: 
+    - light.tradfri_bulb
+    - light.tradfri_bulb_2
   condition: # Vain, jos on aamun ensimmäinen
     condition: state
     entity_id: input_boolean.first_morning
