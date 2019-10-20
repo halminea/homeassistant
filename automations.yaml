@@ -111,6 +111,10 @@
   - service: light.turn_on
     data:
       brightness: 76 
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+  - service: light.turn_on
+    data:
       kelvin: 4000
       entity_id: light.tradfri_bulb_5
       transition: 1
@@ -131,7 +135,11 @@
   action: # Laitetaan valo 100 % teholle. Värilämpötila 4000 K
   - service: light.turn_on
     data:
-      brightness: 254 
+      brightness: 254
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+  - service: light.turn_on
+    data: 
       kelvin: 4000
       entity_id: light.tradfri_bulb_5
       transition: 1
