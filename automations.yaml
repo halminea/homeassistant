@@ -208,3 +208,41 @@
       - light.tradfri_bulb_2
       brightness: '{{ states.input_number.b1_bright.state | int }}'
       transition: 1 # Sekunnin siirtymä
+
+- id: '5' # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa aamulla
+  alias: Enable first morning trigger
+  hide_entity: true
+  trigger:
+    platform: time
+    at: '05:00:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: input_boolean.first_morning
+
+- id: '6'
+  alias: Disable first morning
+  trigger:
+    platform: time
+    at: '10:00:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: input_boolean.first_morning
+
+- id: '7'
+  alias: First morning # Valojen aamutilan sytytys
+  trigger: # Sytytettäessä olohuoneen valot
+    platform: state
+    entity_id: light.tradfri_bulb
+    to: 'on'
+  condition: # Vain, jos on aamun ensimmäinen
+    condition: state
+    entity_id: input_boolean.first_morning
+    state: 'on'
+  action:
+  - service: homeassistant.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa.
+    entity_id: input_boolean.first_morning
+  - service: script.turn_on # Aktivoidaan valmis, erillinen aamuprofiiliskripti.
+    entity_id: script.morning
+
+  
+  
