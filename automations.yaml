@@ -216,8 +216,9 @@
     platform: time
     at: '05:00:00'
   action:
-    service: homeassistant.turn_on
-    entity_id: input_boolean.first_morning
+    service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.first_morning
 
 - id: '6'
   alias: Disable first morning
@@ -225,8 +226,9 @@
     platform: time
     at: '10:00:00'
   action:
-    service: homeassistant.turn_off
-    entity_id: input_boolean.first_morning
+    service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.first_morning
 
 - id: '7'
   alias: First morning # Valojen aamutilan sytytys
@@ -240,8 +242,9 @@
    # entity_id: input_boolean.first_morning
    # state: 'on'
   action:
-  - service: homeassistant.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa.
-    entity_id: input_boolean.first_morning
+  - service: input_boolean.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa.
+    data:  
+      entity_id: input_boolean.first_morning
   - service: script.turn_on # Aktivoidaan valmis, erillinen aamuprofiiliskripti.
     entity_id: script.morning
 
