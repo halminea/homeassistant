@@ -242,9 +242,8 @@
    # entity_id: input_boolean.first_morning
    # state: 'on'
   action:
-  - service: input_boolean.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa.
-    data:  
-      entity_id: input_boolean.first_morning
+  - service: input_boolean.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa. 
+    entity_id: input_boolean.first_morning
   - service: script.turn_on # Aktivoidaan valmis, erillinen aamuprofiiliskripti.
     entity_id: script.morning
 
