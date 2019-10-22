@@ -77,3 +77,13 @@ morning:
       entity_id: light.tradfri_bulb_2
       color_temp: 250
       transition: 10
+
+evening:
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id:
+      - light.tradfri_bulb
+      - light.tradfri_bulb_2
+      brightness: 220
+      color_temp: 300
