@@ -237,7 +237,7 @@
     entity_id: 
     - light.tradfri_bulb
     - light.tradfri_bulb_2
-    from: "off"
+    from: "off" # Tämä ei liene välttämätön rivi.
     to: "on"
   condition: # Vain, jos on aamun ensimmäinen
     condition: state
