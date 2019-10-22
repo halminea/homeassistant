@@ -95,8 +95,8 @@
       - light.tradfri_bulb_2
 
 - id: "1"
-  alias: "hall_nighttime_dim"
-  description: "Pienentää eteisen valon kirkkautta öisin, jos olohuoneen valot eivät ole päällä"
+  alias: "hall_twilighttime_dim"
+  description: "Pienentää eteisen valon kirkkautta iltaisin, jos olohuoneen valot eivät ole päällä"
   trigger: # Aktivoituu, kun eteisen valo syttyy
   - entity_id: light.tradfri_bulb_5
     platform: state
@@ -107,6 +107,8 @@
     state: "off"
   - condition: template
     value_template: '{{ state_attr("sun.sun", "elevation") < -6 }}' # Katsotaan auringon korkeudesta, koska aktivoituu.
+  - condition: template
+    value_template: '{{ state_attr("sun.sun", "elevation") > -18 }}'
   action: # Laitetaan valo 30 % teholle. Värilämpötila 4000 K
   - service: light.turn_on
     data:
@@ -116,6 +118,30 @@
   - service: light.turn_on
     data:
       kelvin: 4000
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+
+- alias: "hall_nighttime_dim"
+  description: "Pienentää eteisen valon kirkkautta öisin, jos olohuoneen valot eivät ole päällä"
+  trigger: # Aktivoituu, kun eteisen valo syttyy
+  - entity_id: light.tradfri_bulb_5
+    platform: state
+    to: "on"
+  condition: # Edellyttää, että olohuoneessa ei valoja ja tapahtuu pimeän aikaan
+  - condition: "state"
+    entity_id: light.tradfri_bulb
+    state: "off"
+  - condition: template
+    value_template: '{{ state_attr("sun.sun", "elevation") <= 18 }}' # Katsotaan auringon korkeudesta, koska aktivoituu.
+  action: # Laitetaan valo 1% teholle. Keltaisin värilämpötila.
+  - service: light.turn_on
+    data:
+      brightness: 1 
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+  - service: light.turn_on
+    data:
+      color_temp: 450
       entity_id: light.tradfri_bulb_5
       transition: 1
 
