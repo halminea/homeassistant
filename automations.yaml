@@ -239,10 +239,10 @@
     - light.tradfri_bulb_2
     from: "off" # Tämä ei liene välttämätön rivi.
     to: "on"
- # condition: # Vain, jos on aamun ensimmäinen
-  #  condition: state
-   # entity_id: input_boolean.first_morning
-    #state: 'on'
+  condition: # Vain, jos on aamun ensimmäinen
+    condition: state
+    entity_id: input_boolean.first_morning
+    state: 'on'
   action:
   - service: input_boolean.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa. 
     entity_id: input_boolean.first_morning
