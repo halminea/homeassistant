@@ -78,7 +78,7 @@ morning:
       color_temp: 250
       transition: 10
 
-evening:
+daytime:
   sequence:
   - service: light.turn_on
     data:
@@ -87,3 +87,4 @@ evening:
       - light.tradfri_bulb_2
       brightness: 220
       color_temp: 300
+      transition: 10
