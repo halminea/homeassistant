@@ -222,7 +222,7 @@
   trigger:
     platform: state
     entity_id: input_number.b1_bright
-  condition: # Toteutetaan vain, jos lamppu on päällä, jottei lamppu mene päälle värilämpötilasäädön takia.
+  condition: # Toteutetaan vain, jos lamppu on päällä, jottei lamppu mene päälle turhaan.
   - condition: state
     entity_id: light.tradfri_bulb
     state: 'on'
@@ -234,6 +234,19 @@
       - light.tradfri_bulb_2
       brightness: '{{ states.input_number.b1_bright.state | int }}'
       transition: 1 # Sekunnin siirtymä
+
+- alias: living_room_bulb_bright_2
+  description: Input_numberin säätö olohuoneen valojen kirkkauden mukaan
+  # Vaihdetaan olohuoneen valojen kirkkautta silloin, kun input_numberia säädetään.
+  trigger: # Aina, kun valoa säädetään jotenkin.
+    platform: state
+    entity_id: light.tradfri_bulb
+  action:
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.b1_bright
+      brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
+
 
 - id: '5' # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa aamulla
   alias: Enable first morning trigger
