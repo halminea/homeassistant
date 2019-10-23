@@ -1,0 +1,6 @@
+first_morning:
+  name: Testi sille, onko kyseessä ensimmäinen olohuoneen valojen päällelaitto aamulla.
+  # hide_entity: true
+first_evening:
+first_daytime:
+first_night:
