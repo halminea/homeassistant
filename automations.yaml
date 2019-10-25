@@ -245,7 +245,7 @@
   - service: input_number.set_value
     data_template:
       entity_id: input_number.b1_bright
-      brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
+      value: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
 
 
 - id: '5' # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa aamulla

@@ -87,10 +87,11 @@ daytime:
       - light.tradfri_bulb_2
       brightness: 220
       transition: 5
+  - delay: "00:00:05"
   - service: light.turn_on
     data:
       entity_id:
       - light.tradfri_bulb_2
       - light.tradfri_bulb
-      color_temp: 300
+      color_temp: 320
       transition: 10
