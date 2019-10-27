@@ -187,6 +187,7 @@
       brightness: '{{ states.light.tradfri_bulb.attributes.brightness | int }}'
       entity_id: light.tradfri_bulb_5
       transition: 1
+  - delay: "00:00:01"
   - service: light.turn_on
     data_template:
       color_temp: '{{ states.light.tradfri_bulb.attributes.color_temp | int }}'
