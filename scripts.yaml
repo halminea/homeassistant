@@ -27,7 +27,6 @@ movie:
       transition: 10
 
 movie_automation: # Automaatioversio, joka tekee asiat nopeammin, ettei yöllä häikäisty vahingossakaan.
-  hide_entity: true
   sequence:
   - service: light.turn_off
     data:
@@ -84,7 +83,6 @@ evening:
       transition: 10
 
 evening_automation: # Automaatioversio. Muuten sama, mutta eteisen valo pysyy päällä.
-  hide_entity: true
   sequence:
   - service: light.turn_on
     data:
