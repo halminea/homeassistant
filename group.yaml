@@ -1,0 +1,27 @@
+kitchen:
+  name: kitchen
+  entities:
+  - light.tradfri_driver
+livingroom:
+  name: livingroom
+  entities:
+  - light.tradfri_bulb
+  - light.tradfri_bulb_2
+hall: 
+  name: hall
+  entities:
+  - light.tradfri_bulb_5
+bedroom:
+  name: bedroom
+  entities:
+  - light.tradfri_bulb_3
+  - light.tradfri_bulb_4
+reading:
+  name: reading
+  entities:
+  - light.tradfri_bulb_4
+bright:
+  name: bright
+  entities:
+  - switch.tradfri_outlet
+  

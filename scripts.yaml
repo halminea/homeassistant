@@ -26,12 +26,66 @@ movie:
       color_temp: 454
       transition: 10
 
+movie_automation: # Automaatioversio, joka tekee asiat nopeammin, ettei yöllä häikäisty vahingossakaan.
+  hide_entity: true
+  sequence:
+  - service: light.turn_off
+    data:
+      entity_id: light.tradfri_bulb_5
+      transition: 1
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb
+      brightness: 1
+      transition: 1
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb_2
+      brightness: 1
+      transition: 1
+  - delay: '00:00:01'
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb
+      color_temp: 454
+      transition: 1
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb_2
+      color_temp: 454
+      transition: 1
+
 evening:
   sequence:
   - service: light.turn_off
     data:
       entity_id: light.tradfri_bulb_5
       transition: 1
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb
+      brightness: 152
+      transition: 5
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb_2
+      brightness: 152
+      transition: 5
+  - delay: '00:00:05'
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb
+      color_temp: 373
+      transition: 10
+  - service: light.turn_on
+    data:
+      entity_id: light.tradfri_bulb_2
+      color_temp: 373
+      transition: 10
+
+evening_automation: # Automaatioversio. Muuten sama, mutta eteisen valo pysyy päällä.
+  hide_entity: true
+  sequence:
   - service: light.turn_on
     data:
       entity_id: light.tradfri_bulb
@@ -77,6 +131,8 @@ morning:
       entity_id: light.tradfri_bulb_2
       color_temp: 250
       transition: 10
+  - service: switch.turn_on
+    entity_id: switch.tradfri_outlet
 
 daytime:
   sequence:
