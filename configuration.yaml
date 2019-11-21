@@ -19,6 +19,6 @@ group: !include group.yaml
 homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
-    - custom_components/ruuvitag-sensor/
+    - custom_components/ruuvitag-sensor/tag1.json
 discovery:
 sensor: !include sensor.yaml
