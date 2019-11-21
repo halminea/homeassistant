@@ -1,20 +1,20 @@
 - platform: file
   name: sauna_temperature
-  file_path: /usr/share/hassio/homeassistant/custom_components/ruuvitag-sensor/tag1.json
+  file_path: custom_components/ruuvitag-sensor/tag1.json
   value_template: '{{ value_json.temperature }}'
   unit_of_measurement: "°C"
   scan_interval: 1
 
 - platform: file
   name: sauna_humidity
-  file_path: /usr/share/hassio/homeassistant/custom_components/ruuvitag-sensor/tag1.json
+  file_path: custom_components/ruuvitag-sensor/tag1.json
   value_template: '{{ value_json.humidity }}'
   unit_of_measurement: "%"
   scan_interval: 1
 
 - platform: file
   name: sauna_pressure
-  file_path: /usr/share/hassio/homeassistant/custom_components/ruuvitag-sensor/tag1.json
+  file_path: custom_components/ruuvitag-sensor/tag1.json
   value_template: '{{ value_json.pressure }}'
   unit_of_measurement: "hPa"
   scan_interval: 1
