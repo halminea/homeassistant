@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "*.yaml": "home-assistant"
-    }
+    },
+    "python.pythonPath": "C:\\Users\\Aapo Halminen\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe"
 }
