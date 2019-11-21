@@ -19,6 +19,6 @@ group: !include group.yaml
 homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
-    - /usr/share/hassio/homeassistant
+    - '/usr/share/hassio/homeassistant'
 discovery:
 sensor: !include sensor.yaml
