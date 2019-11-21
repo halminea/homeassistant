@@ -16,9 +16,6 @@ input_number: !include input_number.yaml
 input_boolean: !include input_boolean.yaml
 scene: !include scene.yaml
 group: !include group.yaml
-homeassistant:
-  customize: !include customize.yaml
-  whitelist_external_dirs:
-    - custom_components/ruuvitag-sensor/
+customize: !include customize.yaml
 discovery:
 sensor: !include sensor.yaml
