@@ -1,0 +1,3 @@
+- platform: ruuvi-hass
+  mac: "D7:FE:5A:B0:AB:59"
+  name: sauna

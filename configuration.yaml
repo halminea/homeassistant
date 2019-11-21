@@ -19,3 +19,4 @@ group: !include group.yaml
 homeassistant:
   customize: !include customize.yaml
 discovery:
+sensor: !include sensor.yaml
