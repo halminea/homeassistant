@@ -18,3 +18,24 @@
   value_template: '{{ value_json.pressure }}'
   unit_of_measurement: "hPa"
   scan_interval: 1
+
+- platform: file
+  name: outside_temperature
+  file_path: custom_components/ruuvitag-sensor/tag2.json
+  value_template: '{{ value_json.temperature }}'
+  unit_of_measurement: "°C"
+  scan_interval: 1
+
+- platform: file
+  name: outside_humidity
+  file_path: custom_components/ruuvitag-sensor/tag2.json
+  value_template: '{{ value_json.humidity }}'
+  unit_of_measurement: "%"
+  scan_interval: 1
+
+- platform: file
+  name: outside_pressure
+  file_path: custom_components/ruuvitag-sensor/tag2.json
+  value_template: '{{ value_json.pressure }}'
+  unit_of_measurement: "hPa"
+  scan_interval: 1
