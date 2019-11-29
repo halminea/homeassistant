@@ -419,3 +419,14 @@
   action:
   - service: switch.turn_off
     entity_id: switch.tradfri_outlet
+
+- id: "12" # Lähettää ilmoituksen, kun sauna on lämmin.
+  alias: sauna_warm
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.sauna_temperature
+    above: 70
+  action:
+    service: notify.simplepush
+    message: "Saunan lämpötila on {{ states.sensor.sauna_temperature.state }} ja kosteus {{ states.sensor.sauna_humidity.state }} %"
+    title: "Sauna lämmin."

@@ -22,3 +22,9 @@ homeassistant:
     - '/config'
 discovery:
 sensor: !include sensor.yaml
+
+# Simple push
+notify:
+  - name: simplepush
+    platform: simplepush
+    device_key: K4jZhB
