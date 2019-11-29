@@ -428,5 +428,6 @@
     above: 70
   action:
     service: notify.simplepush
-    message: "Saunan lämpötila on {{ states.sensor.sauna_temperature.state }} ja kosteus {{ states.sensor.sauna_humidity.state }} %"
-    title: "Sauna lämmin."
+    data:
+      message: "Saunan lämpötila on {{ states.sensor.sauna_temperature.state }} ja kosteus {{ states.sensor.sauna_humidity.state }} %"
+      title: "Sauna lämmin."
