@@ -28,5 +28,3 @@ notify:
   - name: simplepush
     platform: simplepush
     device_key: K4jZhB
-lovelace:
-  mode: yaml
