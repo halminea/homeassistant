@@ -1,0 +1,74 @@
+resources:
+- type: js
+  url: /local/card-mod/card-mod.js?v=1
+- type: module
+  url: /local/slider-entity-row/slider-entity-row.js?v=1
+
+
+views:
+  - title: main
+    icon: mdi:home-outline
+    cards:
+    - type: glance # olohuoneen pikavalinnat
+      title: olohuone
+      show_name: true
+      show_state: false
+      entities:
+      - entity: livingroom_on
+        name: päälle
+        icon: mdi:lightbulb-on-outline
+      - entity: script.morning
+        name: aamu
+        icon: mdi:weather-hazy
+      - entity: script.daytime
+        name: päivä
+        icon: mdi:weather-sunny
+      - entity: script.evening
+        name: ilta
+        icon: mdi:weather-sunset
+      - entity: script.movie
+        name: elokuva
+        icon: mdi:filmstrip
+      - entity: livingroom_off
+        name: pois
+        icon: mdi:lightbulb-off-outline
+    - type: entities # Saunan lämpötilatiedot
+      title: sauna
+      show_header_toggle: false
+      entities:
+      - entity: sensor.sauna_temperature
+        icon: mdi:thermometer
+        name: lämpötila
+      - entity: sensor.sauna_humidity
+        icon: mdi:water-percent
+        name: suhteellinen kosteus
+    - type: entities # ulkoilman lämpötilatiedot
+      title: ulkoilma
+      show_header_toggle: false
+      entities:
+      - entity: sensor.outside_temperature
+        icon: mdi:thermometer
+        name: lämpötila
+      - entity: sensor.outside_humidity
+        icon: mdi:water-percent
+        name: suhteellinen kosteus
+      - entity: sensor.outside_pressure
+        icon: mdi:speedometer
+        name: ilmanpaine
+    - type: entities # Olohuoneen tarkempi kontrolli
+      title: olohuone
+      entities:
+        - light.tradfri_bulb
+        - light.tradfri_bulb_2
+        - light.tradfri_driver
+        - switch.tradfri_outlet
+        - type: custom:slider-entity-row
+          entity: light.livingroom
+          min: 0
+          max: 256
+          step: 1
+          hide_when_off: true
+        - type: custom:slider-entity-row
+          entity: light.livingroom
+          attribute: color_temp
+          hide_when_off: true

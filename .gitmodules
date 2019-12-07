@@ -1,0 +1,6 @@
+[submodule "www/card-mod"]
+	path = www/card-mod
+	url = https://github.com/thomasloven/lovelace-card-mod.git
+[submodule "www/slider-entity-row"]
+	path = www/slider-entity-row
+	url = https://github.com/thomasloven/lovelace-slider-entity-row.git

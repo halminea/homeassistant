@@ -149,3 +149,24 @@ daytime:
       - light.tradfri_bulb
       color_temp: 320
       transition: 10
+
+livingroom_off:
+  sequence:
+  - service: light.turn_off
+    data:
+      entity_id:
+      - light.tradfri_bulb_2
+      - light.tradfri_bulb
+      - light.tradfri_driver
+      - switch.tradfri_outlet
+      transition: 10
+
+livingroom_on:
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id:
+      - light.tradfri_bulb
+      - light.tradfri_bulb_2
+
+      
