@@ -425,7 +425,7 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.sauna_temperature
-    above: 70
+    above: 65
   action:
     service: notify.simplepush
     data:
