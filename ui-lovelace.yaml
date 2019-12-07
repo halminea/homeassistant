@@ -14,7 +14,7 @@ views:
       show_name: true
       show_state: false
       entities:
-      - entity: livingroom_on
+      - entity: script.livingroom_on
         name: päälle
         icon: mdi:lightbulb-on-outline
       - entity: script.morning
@@ -29,7 +29,7 @@ views:
       - entity: script.movie
         name: elokuva
         icon: mdi:filmstrip
-      - entity: livingroom_off
+      - entity: script.livingroom_off
         name: pois
         icon: mdi:lightbulb-off-outline
     - type: entities # Saunan lämpötilatiedot
@@ -63,12 +63,12 @@ views:
         - light.tradfri_driver
         - switch.tradfri_outlet
         - type: custom:slider-entity-row
-          entity: light.livingroom
+          entity: group.livingroom
           min: 0
           max: 256
           step: 1
           hide_when_off: true
         - type: custom:slider-entity-row
-          entity: light.livingroom
+          entity: group.livingroom
           attribute: color_temp
           hide_when_off: true
