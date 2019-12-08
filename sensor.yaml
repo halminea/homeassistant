@@ -39,3 +39,27 @@
   value_template: '{{ value_json.pressure }}'
   unit_of_measurement: "hPa"
   scan_interval: 1
+
+- platform: template
+  sensors:
+    - outside_saturation_pressure:
+        unit_of_measurement: "hPa"
+        value_template: >-
+          {% set A = 6.116441 | float %}
+          {% set m = 7.591386 | float %}
+          {% set tn = 240.7263 | float %}
+          {% set t = states('sensor.outside_temperature') | float %}
+          {{ A * 10 ** ((m*t)/(t+tn))}}
+    - outside_dewpoint:
+        unit_of_measurement: "°C"
+        value_template: >-
+          {% set rh = states('sensor.outside_humidity') %}
+          {% set pw = states('outside_saturation_pressure') * rh / 100 %}
+          {% set A = 6.116441 | float %}
+          {% set m = 7.591386 | float %}
+          {% set tn = 240.7263 | float %}
+          {{ tn / ( m / log( pw / a, 10) - 1) }}
+
+
+
+        

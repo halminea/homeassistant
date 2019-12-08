@@ -3,57 +3,84 @@ resources:
   url: /local/card-mod/card-mod.js?v=1
 - type: module
   url: /local/slider-entity-row/slider-entity-row.js?v=1
-
+- type: js
+  url: /local/vertical-stack-in-card/vertical-stack-in-card.js?v=0.1.3
 
 views:
   - title: main
     icon: mdi:home-outline
     cards:
-    - type: glance # olohuoneen pikavalinnat
+    - type: custom:vertical-stack-in-card # Olohuone yhdessä kortissa
       title: olohuone
-      show_name: true
-      show_state: false
-      entities:
-      - entity: script.livingroom_on
-        name: päälle
-        icon: mdi:lightbulb-on-outline
-        tap_action:
-          action: toggle
-      - entity: script.morning
-        name: aamu
-        icon: mdi:weather-hazy
-        tap_action:
-          action: toggle        
-      - entity: script.daytime
-        name: päivä
-        icon: mdi:weather-sunny
-        tap_action:
-          action: toggle        
-      - entity: script.evening
-        name: ilta
-        icon: mdi:weather-sunset
-        tap_action:
-          action: toggle     
-      - entity: script.movie
-        name: elokuva
-        icon: mdi:filmstrip
-        tap_action:
-          action: toggle     
-      - entity: script.livingroom_off
-        name: pois
-        icon: mdi:lightbulb-off-outline
-        tap_action:
-          action: toggle     
-    - type: entities # Saunan lämpötilatiedot
+      cards:
+      - type: glance # olohuoneen pikavalinnat
+        show_name: true
+        show_state: false
+        entities:
+        - entity: script.livingroom_on
+          name: päälle
+          icon: mdi:lightbulb-on-outline
+          tap_action:
+            action: toggle
+        - entity: script.morning
+          name: aamu
+          icon: mdi:weather-hazy
+          tap_action:
+            action: toggle        
+        - entity: script.daytime
+          name: päivä
+          icon: mdi:weather-sunny
+          tap_action:
+            action: toggle        
+        - entity: script.evening
+          name: ilta
+          icon: mdi:weather-sunset
+          tap_action:
+            action: toggle     
+        - entity: script.movie
+          name: elokuva
+          icon: mdi:filmstrip
+          tap_action:
+            action: toggle     
+        - entity: script.livingroom_off
+          name: pois
+          icon: mdi:lightbulb-off-outline
+          tap_action:
+            action: toggle     
+      - type: entities # Olohuoneen tarkempi kontrolli
+        entities:
+          - type: custom:slider-entity-row
+            entity: light.livingroom
+            name: kirkkaus
+            min: 1
+            max: 100
+            step: 1
+            hide_when_off: true
+          - type: custom:slider-entity-row
+            entity: light.livingroom
+            attribute: color_temp
+            name: värilämpötila
+            min: 250
+            max: 454
+            hide_when_off: true
+
+    - type: custom:vertical-stack-in-card # Sauna
       title: sauna
-      show_header_toggle: false
-      entities:
-      - entity: sensor.sauna_temperature
-        icon: mdi:thermometer
-        name: lämpötila
-      - entity: sensor.sauna_humidity
-        icon: mdi:water-percent
-        name: suhteellinen kosteus
+      cards:
+      - type: entities # Saunan lämpötilatiedot
+        show_header_toggle: false
+        entities:
+        - entity: sensor.sauna_temperature
+          icon: mdi:thermometer
+          name: lämpötila
+        - entity: sensor.sauna_humidity
+          icon: mdi:water-percent
+          name: suhteellinen kosteus
+      - type: history-graph
+        entities:
+        - entity: sensor.sauna_temperature
+          name: lämpötila
+
     - type: entities # ulkoilman lämpötilatiedot
       title: ulkoilma
       show_header_toggle: false
@@ -67,20 +94,6 @@ views:
       - entity: sensor.outside_pressure
         icon: mdi:speedometer
         name: ilmanpaine
-    - type: entities # Olohuoneen tarkempi kontrolli
-      title: olohuone
-      entities:
-        - light.tradfri_bulb
-        - light.tradfri_bulb_2
-        - light.tradfri_driver
-        - switch.tradfri_outlet
-        - type: custom:slider-entity-row
-          entity: light.livingroom
-          min: 0
-          max: 256
-          step: 1
-          hide_when_off: true
-        - type: custom:slider-entity-row
-          entity: light.livingroom
-          attribute: color_temp
-          hide_when_off: true
+      - entity: sensor.outside_dewpoint
+        icon: mdi:coolant-temperature
+        name: kastepiste
