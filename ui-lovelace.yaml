@@ -81,19 +81,27 @@ views:
         - entity: sensor.sauna_temperature
           name: lämpötila
 
-    - type: entities # ulkoilman lämpötilatiedot
+    - type: custom:vertical-stack-in-card # ulkoilman lämpötilatiedot
       title: ulkoilma
-      show_header_toggle: false
-      entities:
-      - entity: sensor.outside_temperature
-        icon: mdi:thermometer
-        name: lämpötila
-      - entity: sensor.outside_humidity
-        icon: mdi:water-percent
-        name: suhteellinen kosteus
-      - entity: sensor.outside_pressure
-        icon: mdi:speedometer
-        name: ilmanpaine
-      - entity: sensor.outside_dewpoint
-        icon: mdi:coolant-temperature
-        name: kastepiste
+      cards:
+      - type: entities # Numeeriset tiedot
+        show_header_toggle: false
+        entities:
+        - entity: sensor.outside_temperature
+          icon: mdi:thermometer
+          name: lämpötila
+        - entity: sensor.outside_humidity
+          icon: mdi:water-percent
+          name: suhteellinen kosteus
+        - entity: sensor.outside_pressure
+          icon: mdi:speedometer
+          name: ilmanpaine
+        - entity: sensor.outside_dewpoint
+          icon: mdi:coolant-temperature
+          name: kastepiste
+      - type: history-graph
+        entities:
+        - entity: sensor.outside_temperature
+          name: lämpötila
+        - entity: sensor.outside_dewpoint
+          name: kastepiste
