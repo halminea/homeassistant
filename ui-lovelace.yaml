@@ -17,21 +17,33 @@ views:
       - entity: script.livingroom_on
         name: päälle
         icon: mdi:lightbulb-on-outline
+        tap_action:
+          action: toggle
       - entity: script.morning
         name: aamu
         icon: mdi:weather-hazy
+        tap_action:
+          action: toggle        
       - entity: script.daytime
         name: päivä
         icon: mdi:weather-sunny
+        tap_action:
+          action: toggle        
       - entity: script.evening
         name: ilta
         icon: mdi:weather-sunset
+        tap_action:
+          action: toggle     
       - entity: script.movie
         name: elokuva
         icon: mdi:filmstrip
+        tap_action:
+          action: toggle     
       - entity: script.livingroom_off
         name: pois
         icon: mdi:lightbulb-off-outline
+        tap_action:
+          action: toggle     
     - type: entities # Saunan lämpötilatiedot
       title: sauna
       show_header_toggle: false
@@ -63,12 +75,12 @@ views:
         - light.tradfri_driver
         - switch.tradfri_outlet
         - type: custom:slider-entity-row
-          entity: group.livingroom
+          entity: light.livingroom
           min: 0
           max: 256
           step: 1
           hide_when_off: true
         - type: custom:slider-entity-row
-          entity: group.livingroom
+          entity: light.livingroom
           attribute: color_temp
           hide_when_off: true

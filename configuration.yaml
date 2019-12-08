@@ -7,26 +7,28 @@ default_config:
 #   base_url: example.duckdns.org:8123
 
 # Text to speech
+discovery:
 tts:
   - platform: google_translate
+lovelace: 
+  mode: yaml
 
+# Includet:
 automation: !include automations.yaml
 script: !include scripts.yaml
 input_number: !include input_number.yaml
 input_boolean: !include input_boolean.yaml
 scene: !include scene.yaml
 group: !include group.yaml
+sensor: !include sensor.yaml
+light: !include light.yaml
 homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
     - '/config'
-discovery:
-sensor: !include sensor.yaml
 
 # Simple push
 notify:
   - name: simplepush
     platform: simplepush
     device_key: K4jZhB
-lovelace: 
-  mode: yaml

@@ -1,0 +1,5 @@
+- platform: group
+  name: livingroom
+  entities:
+    - light.tradfri_bulb
+    - light.tradfri_bulb_2
