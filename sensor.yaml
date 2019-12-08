@@ -57,11 +57,11 @@
         unit_of_measurement: "°C"
         value_template: >-
           {% set rh = states('sensor.outside_humidity') | float %}
-          {% set pw = (states('sensor.outside_saturation_pressure') * rh / 100) | float %}
-          {% set A = 6.116441 | float %}
-          {% set m = 7.591386 | float %}
-          {% set tn = 240.7263 | float %}
-          {% set (pwa = pw / A) | float %}
+          {% set pw = states('sensor.outside_saturation_pressure') | float * rh / 100 %}
+          {% set A = 6.116441 %}
+          {% set m = 7.591386 %}
+          {% set tn = 240.7263 %}
+          {% set pwa = pw / A %}
           {{ tn / ( m / log(pwa,10) - 1) }}
 
 
