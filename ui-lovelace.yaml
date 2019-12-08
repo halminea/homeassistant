@@ -57,6 +57,7 @@ views:
             max: 100
             step: 1
             hide_when_off: true
+            full_row: true
           - type: custom:slider-entity-row
             entity: light.livingroom
             attribute: color_temp
@@ -64,6 +65,7 @@ views:
             min: 250
             max: 454
             hide_when_off: true
+            full_row: true
 
     - type: custom:vertical-stack-in-card # Sauna
       title: sauna
@@ -140,11 +142,11 @@ views:
         name: keittiö
       - entity: light.tradfri_driver
         type: custom:slider-entity-row
-        name: keittiön kirkkaus
         min: 1
         max: 100
         step: 1
         hide_when_off: true
+        full_row: true
       - entity: switch.tradfri_outlet
         name: kirkasvalolamppu
       - entity: light.tradfri_bulb_5
