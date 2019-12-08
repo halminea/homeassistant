@@ -58,6 +58,7 @@ views:
             step: 1
             hide_when_off: true
             full_row: true
+            transition: 1
           - type: custom:slider-entity-row
             entity: light.livingroom
             attribute: color_temp
@@ -66,6 +67,7 @@ views:
             max: 454
             hide_when_off: true
             full_row: true
+            transition: 1
 
     - type: custom:vertical-stack-in-card # Sauna
       title: sauna
@@ -115,10 +117,6 @@ views:
       entities:
       - entity: light.bedroom
         name: kaikki valot
-      - entity: light.tradfri_bulb_3
-        name: kattovalo
-      - entity: light.tradfri_bulb_4
-        name: lukuvalo
       - entity: light.bedroom
         type: custom:slider-entity-row
         name: kirkkaus
@@ -126,6 +124,8 @@ views:
         max: 100
         step: 1
         hide_when_off: true
+        transition: 1
+        full_row: true
       - type: custom:slider-entity-row
         entity: light.bedroom
         attribute: color_temp
@@ -133,6 +133,12 @@ views:
         min: 250
         max: 454
         hide_when_off: true
+        transition: 1
+        full_row: true
+      - entity: light.tradfri_bulb_3
+        name: kattovalo
+      - entity: light.tradfri_bulb_4
+        name: lukuvalo
 
     - type: entities
       title: muut valot
@@ -147,6 +153,7 @@ views:
         step: 1
         hide_when_off: true
         full_row: true
+        transition: 1
       - entity: switch.tradfri_outlet
         name: kirkasvalolamppu
       - entity: light.tradfri_bulb_5
