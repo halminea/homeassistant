@@ -42,7 +42,7 @@
 
 - platform: template
   sensors:
-    - outside_saturation_pressure:
+      outside_saturation_pressure:
         unit_of_measurement: "hPa"
         value_template: >-
           {% set A = 6.116441 | float %}
@@ -53,7 +53,7 @@
     
 - platform: template
   sensors:
-    - outside_dewpoint:
+      outside_dewpoint:
         unit_of_measurement: "°C"
         value_template: >-
           {% set rh = states('sensor.outside_humidity') %}
