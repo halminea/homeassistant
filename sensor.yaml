@@ -50,6 +50,9 @@
           {% set tn = 240.7263 | float %}
           {% set t = states('sensor.outside_temperature') | float %}
           {{ A * 10 ** ((m*t)/(t+tn))}}
+    
+- platform: template
+  sensors:
     - outside_dewpoint:
         unit_of_measurement: "°C"
         value_template: >-
