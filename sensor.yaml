@@ -61,7 +61,7 @@
           {% set A = 6.116441 | float %}
           {% set m = 7.591386 | float %}
           {% set tn = 240.7263 | float %}
-          {{ tn / ( m / log( pw / a, 10) - 1) }}
+          {{ tn / ( m / log( pw / A, 10) - 1) }}
 
 
 
