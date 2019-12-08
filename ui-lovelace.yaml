@@ -108,7 +108,7 @@ views:
           name: kastepiste
 
     - type: entities
-      name: makuuhuone
+      title: makuuhuone
       show_header_toggle: false
       entities:
       - entity: light.bedroom
@@ -132,13 +132,13 @@ views:
         max: 454
         hide_when_off: true
 
-  - type: entities
-    name: muut valot
-    show_header_toggle: false
-    entities:
-    - entity: light.tradfri_driver
-      name: keittiö
-    - entity: switch.tradfri_outlet
-      name: kirkasvalolamppu
-    - entity: light.tradfri_bulb_5
-      name: eteinen
+    - type: entities
+      title: muut valot
+      show_header_toggle: false
+      entities:
+      - entity: light.tradfri_driver
+        name: keittiö
+      - entity: switch.tradfri_outlet
+        name: kirkasvalolamppu
+      - entity: light.tradfri_bulb_5
+        name: eteinen
