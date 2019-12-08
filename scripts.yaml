@@ -159,6 +159,7 @@ livingroom_off:
       - light.tradfri_bulb
       - light.tradfri_driver
       - switch.tradfri_outlet
+      - light.tradfri_bulb_5
       transition: 10
 
 livingroom_on:
@@ -169,4 +170,3 @@ livingroom_on:
       - light.tradfri_bulb
       - light.tradfri_bulb_2
 
-      

@@ -16,7 +16,7 @@ views:
       - type: glance # olohuoneen pikavalinnat
         show_name: true
         show_state: false
-        colums: 6
+        columns: 6
         entities:
         - entity: script.livingroom_on
           name: päälle
@@ -100,9 +100,45 @@ views:
         - entity: sensor.outside_dewpoint
           icon: mdi:coolant-temperature
           name: kastepiste
-      - type: history-graph
+      - type: history-graph # graafi
         entities:
         - entity: sensor.outside_temperature
           name: lämpötila
         - entity: sensor.outside_dewpoint
           name: kastepiste
+
+    - type: entities
+      name: makuuhuone
+      show_header_toggle: false
+      entities:
+      - entity: light.bedroom
+        name: kaikki valot
+      - entity: light.tradfri_bulb_3
+        name: kattovalo
+      - entity: light.tradfri_bulb_4
+        name: lukuvalo
+      - entity: light.bedroom
+        type: custom:slider-entity-row
+        name: kirkkaus
+        min: 1
+        max: 100
+        step: 1
+        hide_when_off: true
+      - type: custom:slider-entity-row
+        entity: light.bedroom
+        attribute: color_temp
+        name: värilämpötila
+        min: 250
+        max: 454
+        hide_when_off: true
+
+  - type: entities
+    name: muut valot
+    show_header_toggle: false
+    entities:
+    - entity: light.tradfri_driver
+      name: keittiö
+    - entity: switch.tradfri_outlet
+      name: kirkasvalolamppu
+    - entity: light.tradfri_bulb_5
+      name: eteinen

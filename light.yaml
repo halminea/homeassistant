@@ -3,3 +3,10 @@
   entities:
     - light.tradfri_bulb
     - light.tradfri_bulb_2
+
+- platform: group
+  name: bedroom
+  entities:
+    - light.tradfri_bulb_4
+    - light.tradfri_bulb_3
+    
