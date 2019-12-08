@@ -16,6 +16,7 @@ views:
       - type: glance # olohuoneen pikavalinnat
         show_name: true
         show_state: false
+        colums: 6
         entities:
         - entity: script.livingroom_on
           name: päälle
