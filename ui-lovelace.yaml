@@ -70,23 +70,23 @@ views:
             transition: 1
   
     - type: entities # Muut valot 
-    title: muut valot
-    show_header_toggle: false
-    entities:
-    - entity: light.tradfri_driver
-      name: keittiö
-    - entity: light.tradfri_driver
-      type: custom:slider-entity-row
-      min: 1
-      max: 100
-      step: 1
-      hide_when_off: true
-      full_row: true
-      transition: 1
-    - entity: switch.tradfri_outlet
-      name: kirkasvalolamppu
-    - entity: light.tradfri_bulb_5
-      name: eteinen
+      title: muut valot
+      show_header_toggle: false
+      entities:
+      - entity: light.tradfri_driver
+        name: keittiö
+      - entity: light.tradfri_driver
+        type: custom:slider-entity-row
+        min: 1
+        max: 100
+        step: 1
+        hide_when_off: true
+        full_row: true
+        transition: 1
+      - entity: switch.tradfri_outlet
+        name: kirkasvalolamppu
+      - entity: light.tradfri_bulb_5
+        name: eteinen
   
     - type: entities # Makuuhuoneen kytkimet ja liukusäätimet
       title: makuuhuone
