@@ -68,50 +68,27 @@ views:
             hide_when_off: true
             full_row: true
             transition: 1
-
-    - type: custom:vertical-stack-in-card # Sauna
-      title: sauna
-      cards:
-      - type: entities # Saunan lämpötilatiedot
-        show_header_toggle: false
-        entities:
-        - entity: sensor.sauna_temperature
-          icon: mdi:thermometer
-          name: lämpötila
-        - entity: sensor.sauna_humidity
-          icon: mdi:water-percent
-          name: suhteellinen kosteus
-      - type: history-graph
-        entities:
-        - entity: sensor.sauna_temperature
-          name: lämpötila
-
-    - type: custom:vertical-stack-in-card # ulkoilman lämpötilatiedot
-      title: ulkoilma
-      cards:
-      - type: entities # Numeeriset tiedot
-        show_header_toggle: false
-        entities:
-        - entity: sensor.outside_temperature
-          icon: mdi:thermometer
-          name: lämpötila
-        - entity: sensor.outside_humidity
-          icon: mdi:water-percent
-          name: suhteellinen kosteus
-        - entity: sensor.outside_pressure
-          icon: mdi:speedometer
-          name: ilmanpaine
-        - entity: sensor.outside_dewpoint
-          icon: mdi:coolant-temperature
-          name: kastepiste
-      - type: history-graph # graafi
-        entities:
-        - entity: sensor.outside_temperature
-          name: lämpötila
-        - entity: sensor.outside_dewpoint
-          name: kastepiste
-
-    - type: entities
+  
+    - type: entities # Muut valot 
+    title: muut valot
+    show_header_toggle: false
+    entities:
+    - entity: light.tradfri_driver
+      name: keittiö
+    - entity: light.tradfri_driver
+      type: custom:slider-entity-row
+      min: 1
+      max: 100
+      step: 1
+      hide_when_off: true
+      full_row: true
+      transition: 1
+    - entity: switch.tradfri_outlet
+      name: kirkasvalolamppu
+    - entity: light.tradfri_bulb_5
+      name: eteinen
+  
+    - type: entities # Makuuhuoneen kytkimet ja liukusäätimet
       title: makuuhuone
       show_header_toggle: false
       entities:
@@ -140,21 +117,47 @@ views:
       - entity: light.tradfri_bulb_4
         name: lukuvalo
 
-    - type: entities
-      title: muut valot
-      show_header_toggle: false
-      entities:
-      - entity: light.tradfri_driver
-        name: keittiö
-      - entity: light.tradfri_driver
-        type: custom:slider-entity-row
-        min: 1
-        max: 100
-        step: 1
-        hide_when_off: true
-        full_row: true
-        transition: 1
-      - entity: switch.tradfri_outlet
-        name: kirkasvalolamppu
-      - entity: light.tradfri_bulb_5
-        name: eteinen
+    - type: custom:vertical-stack-in-card # Sauna
+      title: sauna
+      cards:
+      - type: entities # Saunan lämpötilatiedot
+        show_header_toggle: false
+        entities:
+        - entity: sensor.sauna_temperature
+          icon: mdi:thermometer
+          name: lämpötila
+        - entity: sensor.sauna_humidity
+          icon: mdi:water-percent
+          name: suhteellinen kosteus
+      - type: history-graph # Graafi
+        refresh_interval: 30
+        entities:
+        - entity: sensor.sauna_temperature
+          name: lämpötila
+
+
+    - type: custom:vertical-stack-in-card # ulkoilman lämpötilatiedot
+      title: ulkoilma
+      cards:
+      - type: entities # Numeeriset tiedot
+        show_header_toggle: false
+        entities:
+        - entity: sensor.outside_temperature
+          icon: mdi:thermometer
+          name: lämpötila
+        - entity: sensor.outside_humidity
+          icon: mdi:water-percent
+          name: suhteellinen kosteus
+        - entity: sensor.outside_pressure
+          icon: mdi:speedometer
+          name: ilmanpaine
+        - entity: sensor.outside_dewpoint
+          icon: mdi:coolant-temperature
+          name: kastepiste
+      - type: history-graph # graafi
+        refresh_interval: 30
+        entities:
+        - entity: sensor.outside_temperature
+          name: lämpötila
+        - entity: sensor.outside_dewpoint
+          name: kastepiste
