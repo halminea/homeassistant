@@ -68,6 +68,9 @@ views:
             hide_when_off: true
             full_row: true
             transition: 1
+          - entity: input_boolean.tv
+            name: televisio
+            icon: mdi:television
   
     - type: entities # Muut valot 
       title: muut valot
