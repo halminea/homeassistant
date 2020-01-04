@@ -7,7 +7,8 @@ default_config:
 #   base_url: example.duckdns.org:8123
 
 # Text to speech
-discovery:
+tradfri:
+  host: 192.168.1.192
 tts:
   - platform: google_translate
 lovelace: 
