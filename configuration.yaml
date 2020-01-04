@@ -34,7 +34,7 @@ notify:
     device_key: K4jZhB
 
 # IR-lähetin
-remote:
+switch:
   - platform: broadlink
     host: 192.168.1.124
     mac: 78:0F:77:4F:80:C4
