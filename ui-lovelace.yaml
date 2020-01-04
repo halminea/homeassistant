@@ -68,7 +68,7 @@ views:
             hide_when_off: true
             full_row: true
             transition: 1
-          - entity: input_boolean.tv
+          - entity: switch.tv # Television virtakytkin
             name: televisio
             icon: mdi:television
   
