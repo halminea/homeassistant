@@ -22,6 +22,7 @@ scene: !include scene.yaml
 group: !include group.yaml
 sensor: !include sensor.yaml
 light: !include light.yaml
+switch: !include switch.yaml
 homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
@@ -32,9 +33,3 @@ notify:
   - name: simplepush
     platform: simplepush
     device_key: K4jZhB
-
-# IR-lähetin
-switch:
-  - platform: broadlink
-    host: 192.168.1.124
-    mac: 78:0F:77:4F:80:C4
