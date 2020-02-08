@@ -420,6 +420,16 @@
   - service: switch.turn_off
     entity_id: switch.tradfri_outlet
 
+- id: "11.5" # Sammuttaa keittiön valot, kun olohuoneen valot sammutetaan.
+  alias: kitchen_off
+  trigger: # Sammutettaessa olohuoneen valo
+    platform: state
+    entity_id: light.tradfri_bulb
+    to: "off"
+  action:
+  - service: light.turn_off
+    entity_id: light.tradfri_driver   
+
 - id: "12" # Lähettää ilmoituksen, kun sauna on lämmin.
   alias: sauna_warm
   trigger:
@@ -427,7 +437,7 @@
     entity_id: sensor.sauna_temperature
     above: 65
   action:
-    service: notify.simplepush
+    service: notify.mobile_app_motog7
     data:
       message: "Saunan lämpötila on {{ states.sensor.sauna_temperature.state }} ja kosteus {{ states.sensor.sauna_humidity.state }} %"
       title: "Sauna lämmin."
