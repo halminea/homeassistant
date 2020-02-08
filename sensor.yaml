@@ -62,7 +62,7 @@
           {% set m = 7.591386 %}
           {% set tn = 240.7263 %}
           {% set pwa = pw / A %}
-          {{ (tn / ( m / log(pwa,10) - 1)) | round(1) }}
+          {{ (tn / ( m / log(pwa,10) - 1)) | round(2) }}
 
 
 
