@@ -144,8 +144,8 @@ daytime:
   sequence:
   - service: switch.turn_off
     data:
-      - entity_id:
-        - switch.tradfri_outlet
+      entity_id:
+      - switch.tradfri_outlet
   - service: light.turn_on
     data:
       entity_id:
