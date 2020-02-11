@@ -245,10 +245,12 @@
 
 - alias: living_room_bulb_bright_2
   description: Input_numberin säätö olohuoneen valojen kirkkauden mukaan
-  # Vaihdetaan olohuoneen valojen kirkkautta silloin, kun input_numberia säädetään.
+  # Input-numberin säätö olohuoneen valojen mukaan.
   trigger: # Aina, kun valoa säädetään jotenkin.
     platform: state
     entity_id: light.tradfri_bulb
+    for:
+      minutes: 1
   action:
   - service: input_number.set_value
     data_template:
