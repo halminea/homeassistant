@@ -249,6 +249,7 @@
   trigger: # Aina, kun valoa säädetään jotenkin.
     platform: state
     entity_id: light.tradfri_bulb
+    to: on
     for:
       minutes: 1
   action:
