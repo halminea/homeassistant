@@ -510,7 +510,7 @@
         entity_id: switch.tv
         state: "on"
   action:
-    service: notify.mobile_app_moto_g_7_2
+    service: notify.mobile_app_motog7
     data:
       message: "Joitakin laitteita on päällä."
       data:
@@ -552,7 +552,7 @@
     entity_id: device_tracker.moto_g_7_2
     state: "not_home"
   action:
-    - service: notify.mobile_app_moto_g_7_2
+    - service: notify.mobile_app_motog7
       data:
         message: "Makuuhuoneen valot syttyivät"
         data:
