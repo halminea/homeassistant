@@ -71,6 +71,9 @@ views:
           - entity: switch.tv # Television virtakytkin
             name: televisio
             icon: mdi:television
+          - entity: switch.tradfri_outlet_2 # Vahvistimen virtakytkin.
+            name: äänentoisto
+            icon: mdi:speaker
   
     - type: entities # Muut valot 
       title: muut valot
