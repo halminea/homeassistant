@@ -444,3 +444,37 @@
     data:
       message: "Saunan lämpötila on {{ states.sensor.sauna_temperature.state }} ja kosteus {{ states.sensor.sauna_humidity.state }} %"
       title: "Sauna lämmin."
+
+- id: "13" # Vahvistin päälle, kun TV laitetaan päälle.
+  alias: tv_to_amp_on
+  trigger:
+    platform: state
+    entity_id: switch.tv
+    to: "on"
+  condition: # Ei tehdä mitään, jos vahvistin on jo päällä 
+    condition: state
+    entity_id: switch.tradfri_outlet_2
+    state: "off"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.tradfri_outlet_2
+      # Input boolean sitä varten, että tiedetään myöhemmin onko vahvistin laitettu päälle television kanssa.
+    - service: input_boolean_turn_on 
+      entity_id: input_boolean.amp_from_tv
+
+- id: "14" # Vahvistin pois, kun TV laitetaan pois
+  alias: tv_to_amp_off
+  trigger:
+    platform: state
+    entity_id: switch.tv
+    to: "off"
+  condition: # Vain jos vahvistin on laitettu TV:n kanssa päälle. 
+    condition: state
+    entity_id: input_boolean.amp_from_tv
+    state: "on"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.tradfri_outlet_2
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.amp_from_tv
+
