@@ -478,4 +478,102 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.amp_from_tv
 
+- id: "15" # Huomauttaa valoista yms. kun poistuu kotoa.
+  alias: leaving_home_notification
+  trigger:
+    platform: state
+    entity_id: device_tracker.moto_g_7_2
+    from: "home"
+    for: '00:03:00'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: switch.tradfri_outlet_2
+        state: "on"
+      - condition: state
+        entity_id: switch.tradfri_outlet
+        state: "on"
+      - condition: state
+        entity_id: light.tradfri_bulb
+        state: "on"
+      - condition: state
+        entity_id: light.tradfri_driver
+        state: "on"
+      - condition: state
+        entity_id: light.tradfri_bulb_3
+        state: "on"
+      - condition: state
+        entity_id: light.tradfri_bulb_4
+        state: "on"
+      - condition: state
+        entity_id: switch.tv
+        state: "on"
+  action:
+    service: notify.mobile_app_moto_g_7_2
+    data:
+      message: "Joitakin laitteita on päällä."
+      data:
+        actions:
+        - action: "shut_down_devices"
+          title: "Sammuta laitteet"
+
+- id: "16" # Edelliselle automaatiolle automaatio, joka sammuttaa laitteet.
+  alias: shut_down_devices
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: shut_down_devices
+  action:
+    - service: light.turn_off
+      entity_id:
+      - light.tradfri_bulb_4
+      - light.tradfri_bulb_3
+      - light.tradfri_bulb
+      - light.tradfri_bulb_2
+      - light.tradfri_driver
+    - service: switch.turn_off
+      entity_id:
+      - switch.tv
+      - switch.tradfri_outlet
+      - switch.tradfri_outlet_2
+
+- id: "17" # Makuuhuoneen valot päälle, kun ei ole kotona
+  alias: bedroom_light_on_notification
+  trigger:
+    platform: state
+    entity_id:
+      - light.tradfri_bulb_4
+      - light.tradfri_bulb_3
+    to: "on"
+  condition:
+    condition: state
+    entity_id: device_tracker.moto_g_7_2
+    state: "not_home"
+  action:
+    - service: notify.mobile_app_moto_g_7_2
+      data:
+        message: "Makuuhuoneen valot syttyivät"
+        data:
+          actions:
+          - action: "bedroom_lights_off"
+            title: "Sammuta valot"
+    
+- id: "18" # Edelliseen sammutusautomatiikka
+  alias: bedroom_lights_off
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: bedroom_lights_off
+  action:
+  - service: light.turn_off
+    entity_id:
+      - light.tradfri_bulb_3
+      - light.tradfri_bulb_4
+
+
+
+
 
