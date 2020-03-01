@@ -459,7 +459,7 @@
     - service: switch.turn_on
       entity_id: switch.tradfri_outlet_2
       # Input boolean sitä varten, että tiedetään myöhemmin onko vahvistin laitettu päälle television kanssa.
-    - service: input_boolean_turn_on 
+    - service: input_boolean.turn_on 
       entity_id: input_boolean.amp_from_tv
 
 - id: "14" # Vahvistin pois, kun TV laitetaan pois
