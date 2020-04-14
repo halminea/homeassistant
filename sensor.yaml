@@ -40,6 +40,28 @@
   unit_of_measurement: "hPa"
   scan_interval: 1
 
+- platform: file
+  name: inside_temperature
+  file_path: custom_components/ruuvitag-sensor/tag3.json
+  value_template: '{{ value_json.temperature }}'
+  unit_of_measurement: "°C"
+  scan_interval: 1
+
+- platform: file
+  name: inside_humidity
+  file_path: custom_components/ruuvitag-sensor/tag3.json
+  value_template: '{{ value_json.humidity }}'
+  unit_of_measurement: "%"
+  scan_interval: 1
+
+- platform: file
+  name: inside_pressure
+  file_path: custom_components/ruuvitag-sensor/tag3.json
+  value_template: '{{ value_json.pressure }}'
+  unit_of_measurement: "hPa"
+  scan_interval: 1
+
+
 - platform: template
   sensors:
       outside_saturation_pressure:
@@ -64,6 +86,28 @@
           {% set pwa = pw / A %}
           {{ (tn / ( m / log(pwa,10) - 1)) | round(2) }}
 
-
+- platform: template
+  sensors:
+      inside_saturation_pressure:
+        unit_of_measurement: "hPa"
+        value_template: >-
+          {% set A = 6.116441 | float %}
+          {% set m = 7.591386 | float %}
+          {% set tn = 240.7263 | float %}
+          {% set t = states('sensor.inside_temperature') | float %}
+          {{ A * 10 ** ((m*t)/(t+tn))}}
+    
+- platform: template
+  sensors:
+      outside_dewpoint:
+        unit_of_measurement: "°C"
+        value_template: >-
+          {% set rh = states('sensor.inside_humidity') | float %}
+          {% set pw = states('sensor.inside_saturation_pressure') | float * rh / 100 %}
+          {% set A = 6.116441 %}
+          {% set m = 7.591386 %}
+          {% set tn = 240.7263 %}
+          {% set pwa = pw / A %}
+          {{ (tn / ( m / log(pwa,10) - 1)) | round(2) }}
 
         

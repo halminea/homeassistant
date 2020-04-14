@@ -167,3 +167,29 @@ views:
           name: lämpötila
         - entity: sensor.outside_dewpoint
           name: kastepiste
+
+    - type: custom:vertical-stack-in-card # sisäilman lämpötilatiedot
+      title: sisäilma
+      cards:
+      - type: entities # Numeeriset tiedot
+        show_header_toggle: false
+        entities:
+        - entity: sensor.inide_temperature
+          icon: mdi:thermometer
+          name: lämpötila
+        - entity: sensor.inside_humidity
+          icon: mdi:water-percent
+          name: suhteellinen kosteus
+        - entity: sensor.inside_pressure
+          icon: mdi:speedometer
+          name: ilmanpaine
+        - entity: sensor.inside_dewpoint
+          icon: mdi:coolant-temperature
+          name: kastepiste
+      - type: history-graph # graafi
+        refresh_interval: 30
+        entities:
+        - entity: sensor.inside_temperature
+          name: lämpötila
+        - entity: sensor.inside_dewpoint
+          name: kastepiste
