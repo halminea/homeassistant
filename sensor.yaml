@@ -99,7 +99,7 @@
     
 - platform: template
   sensors:
-      outside_dewpoint:
+      inside_dewpoint:
         unit_of_measurement: "°C"
         value_template: >-
           {% set rh = states('sensor.inside_humidity') | float %}
