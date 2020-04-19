@@ -89,8 +89,8 @@ views:
         hide_when_off: true
         full_row: true
         transition: 1
-      - entity: switch.tradfri_outlet
-        name: kirkasvalolamppu
+ #     - entity: switch.tradfri_outlet
+  #      name: kirkasvalolamppu
       - entity: light.tradfri_bulb_5
         name: eteinen
   

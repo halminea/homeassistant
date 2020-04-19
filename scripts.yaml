@@ -3,6 +3,13 @@ movie:
   - service: switch.turn_off
     data:
       entity_id:
+      - input_boolean.first_daytime
+      - input_boolean.first_evening
+      - input_boolean.first_morning
+      - input_boolean.first_night
+  - service: switch.turn_off
+    data:
+      entity_id:
       - switch.tradfri_outlet
   - service: light.turn_off
     data:
@@ -63,6 +70,13 @@ evening:
   - service: switch.turn_off
     data:
       entity_id:
+      - input_boolean.first_daytime
+      - input_boolean.first_evening
+      - input_boolean.first_morning
+      - input_boolean.first_night
+  - service: switch.turn_off
+    data:
+      entity_id:
       - switch.tradfri_outlet
   - service: light.turn_off
     data:
@@ -116,6 +130,13 @@ evening_automation: # Automaatioversio. Muuten sama, mutta eteisen valo pysyy p√
 
 morning: 
   sequence:
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - input_boolean.first_daytime
+      - input_boolean.first_evening
+      - input_boolean.first_morning
+      - input_boolean.first_night
   - service: light.turn_on
     data:
       entity_id: light.tradfri_bulb
@@ -142,6 +163,13 @@ morning:
 
 daytime:
   sequence:
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - input_boolean.first_daytime
+      - input_boolean.first_evening
+      - input_boolean.first_morning
+      - input_boolean.first_night
   - service: switch.turn_off
     data:
       entity_id:
@@ -172,7 +200,7 @@ livingroom_off:
       - light.tradfri_driver
       - switch.tradfri_outlet
       - light.tradfri_bulb_5
-      transition: 10
+      transition: 3
 
 livingroom_on:
   sequence:
