@@ -7,6 +7,7 @@ movie:
       - input_boolean.first_evening
       - input_boolean.first_morning
       - input_boolean.first_night
+  - delay: '00:00:01'
   - service: switch.turn_off
     data:
       entity_id:
@@ -74,6 +75,7 @@ evening:
       - input_boolean.first_evening
       - input_boolean.first_morning
       - input_boolean.first_night
+  - delay: '00:00:01'
   - service: switch.turn_off
     data:
       entity_id:
@@ -137,6 +139,7 @@ morning:
       - input_boolean.first_evening
       - input_boolean.first_morning
       - input_boolean.first_night
+  - delay: '00:00:01'
   - service: light.turn_on
     data:
       entity_id: light.tradfri_bulb
@@ -170,6 +173,7 @@ daytime:
       - input_boolean.first_evening
       - input_boolean.first_morning
       - input_boolean.first_night
+  - delay: '00:00:01'
   - service: switch.turn_off
     data:
       entity_id:
