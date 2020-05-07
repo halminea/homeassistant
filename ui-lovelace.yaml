@@ -87,8 +87,8 @@ views:
       entities:
       - entity: light.tradfri_driver
         name: keittiö
-      - entity: light.tradfri_driver
-        type: custom:slider-entity-row
+      - type: custom:slider-entity-row
+        entity: light.tradfri_driver
         min: 1
         max: 100
         step: 1
