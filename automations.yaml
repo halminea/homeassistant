@@ -261,7 +261,6 @@
 
 - id: '5' # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa aamulla
   alias: Enable first morning trigger
-  hide_entity: true
   trigger:
     platform: time
     at: '05:00:00'
@@ -300,7 +299,7 @@
     entity_id: script.morning
 
 - alias: Enable first daytime trigger  # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa päivällä
-  hide_entity: true
+  
   trigger:
     platform: time
     at: '10:00:00'
@@ -338,7 +337,7 @@
     entity_id: script.daytime
 
 - alias: Enable first daytime trigger  # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa illalla
-  hide_entity: true
+  
   trigger:
     platform: time
     at: '18:00:00'
@@ -376,7 +375,7 @@
     entity_id: script.evening_automation
   
 - alias: Enable first night trigger  # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa yöllä
-  hide_entity: true
+  
   trigger:
     platform: time
     at: '23:00:00'
