@@ -66,6 +66,12 @@ views:
           - entity: switch.tradfri_outlet_2 # Vahvistimen virtakytkin.
             name: äänentoisto
             icon: mdi:speaker
+          - type: custom:slider-entity-row
+            min: 0
+            max: 100
+            entity: cover.tradfri_blind
+            name: verho
+            icon: mdi-blinds
   
     - type: entities # Muut valot 
       title: muut valot
