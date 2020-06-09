@@ -572,7 +572,18 @@
       - light.tradfri_bulb_3
       - light.tradfri_bulb_4
 
-
-
-
-
+- id: "19" # Ilmastoinnin sammutus
+  alias: fan_off
+  trigger: 
+  - platform: template
+    value_template: "{{ states.sensor.time.state == (states.input_datetime.fan_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  condition: 
+    condition: state
+    entity_id: input_boolean:fan_time
+    state: "on"
+  action:
+    - service: switch.turn_off
+      entity_id:
+      - switch.tradfri_outlet_2
+      - switch.tradfri_outlet_3
+    

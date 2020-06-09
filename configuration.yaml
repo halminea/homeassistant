@@ -32,6 +32,7 @@ group: !include group.yaml
 sensor: !include sensor.yaml
 light: !include light.yaml
 switch: !include switch.yaml
+input_datetime: !include input_datetime.yaml
 homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
