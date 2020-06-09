@@ -20,6 +20,8 @@ lovelace:
     url: /local/slider-entity-row/slider-entity-row.js?v=1
   - type: js
     url: /local/vertical-stack-in-card/vertical-stack-in-card.js?v=0.1.3
+  - url: /local/time-picker-card.js
+    type: module
 
 
 # Includet:
