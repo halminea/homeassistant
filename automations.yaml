@@ -579,7 +579,7 @@
     value_template: "{{ states.sensor.time.state == (states.input_datetime.fan_time.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
   condition: 
     condition: state
-    entity_id: input_boolean:fan_time
+    entity_id: input_boolean.fan_time
     state: "on"
   action:
     - service: switch.turn_off
