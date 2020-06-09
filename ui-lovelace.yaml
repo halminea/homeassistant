@@ -205,7 +205,7 @@ views:
           icon: mdi:fan
           name: tuulettimet
         - entity: input_boolean.fan_time
-      - type: custom:time-picker-card
+      - type: 'custom:time-picker-card'
         entity: input_datetime.fan_time
         hour_mode: 24
         hide:
