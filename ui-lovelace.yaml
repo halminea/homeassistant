@@ -204,7 +204,7 @@ views:
         - entity: switch.tradfri_outlet_3
           icon: mdi:fan
           name: tuulettimet
-        - entity: input_boolean:fan_time
+        - entity: input_boolean.fan_time
       - type: custom:time-picker-card
         entity: input_datetime.fan_time
         hour_mode: 24
