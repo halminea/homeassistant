@@ -584,6 +584,6 @@
   action:
     - service: switch.turn_off
       entity_id:
-      - switch.tradfri_outlet_2
+      - switch.tradfri_outlet
       - switch.tradfri_outlet_3
     

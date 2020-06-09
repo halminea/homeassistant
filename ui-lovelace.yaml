@@ -198,7 +198,7 @@ views:
       - type: entities
         show_header_toggle: true
         entities:
-        - entity: switch.tradfri_outlet_2
+        - entity: switch.tradfri_outlet
           icon: mdi:air-conditioner
           name: ilmastointilaite
         - entity: switch.tradfri_outlet_3
