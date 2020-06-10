@@ -586,4 +586,6 @@
       entity_id:
       - switch.tradfri_outlet
       - switch.tradfri_outlet_3
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.fan_time
     
