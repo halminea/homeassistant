@@ -589,3 +589,14 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.fan_time
     
+- id: "20" # Sammuttaa vahvistimen sun muut kun valot sammutetaan
+  alias: amp_off
+  trigger:
+      platform: state
+      entity_id: light.tradfri_bulb
+      to: "off"
+  action:
+    - service: switch.turn_off
+      entity_id: 
+        - switch.tradfri_outlet_2
+        - switch.tv
