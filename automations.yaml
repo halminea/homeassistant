@@ -534,9 +534,9 @@
       - light.tradfri_driver
     - service: switch.turn_off
       entity_id:
- #     - switch.tv
       - switch.tradfri_outlet
       - switch.tradfri_outlet_2
+    - service: script.tv_off
 
 - id: "17" # Makuuhuoneen valot päälle, kun ei ole kotona
   alias: bedroom_light_on_notification
@@ -599,4 +599,4 @@
     - service: switch.turn_off
       entity_id: 
         - switch.tradfri_outlet_2
-        - switch.tv
+    - service: script.tv_off

@@ -205,6 +205,7 @@ livingroom_off:
       - switch.tradfri_outlet
       - light.tradfri_bulb_5
       transition: 3
+  - service: script.tv_off
 
 livingroom_on:
   sequence:
@@ -214,3 +215,11 @@ livingroom_on:
       - light.tradfri_bulb
       - light.tradfri_bulb_2
 
+tv_off:
+  sequence:
+  - condition: state
+    entity_id:
+      - switch.tv
+    state: "on"
+  - service: switch.turn_off
+    entity_id: switch.tv
