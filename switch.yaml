@@ -1,0 +1,24 @@
+# IR - lähetin
+- platform: broadlink
+  host: 192.168.1.125
+  mac: 78:0F:77:4F:80:C4
+
+# TV-hallinta
+- platform: template
+  switches:
+    tv:
+      value_template: "{{ is_state('input_boolean.tv', 'on') }}"
+      turn_on:
+        - service: input_boolean.turn_on
+          entity_id: input_boolean.tv
+        - service: broadlink.send
+          data:
+            host: 192.168.1.125
+            packet: 'JgCMAJOTFDYTNhQ1FBETEhISFBETEhI3EzYUNhMRExITEhMRExITEhI3ExISEhMSEhMSEhMSEjcTEhI3FDUTNxM2FDUTNxMABgGTkxQ1FDYTNhQREhIUERMSExETNxM2FDUUERQRExEUERMSEhIUNhMRFBETEhMRFBETEhM2ExITNhM2FDUUNhM2FDQVAA0FAAAAAAAAAAAAAAAA'
+      turn_off:
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.tv
+        - service: broadlink.send
+          data:
+            host: 192.168.1.125
+            packet: 'JgCMAJOTFDYTNhQ1FBETEhISFBETEhI3EzYUNhMRExITEhMRExITEhI3ExISEhMSEhMSEhMSEjcTEhI3FDUTNxM2FDUTNxMABgGTkxQ1FDYTNhQREhIUERMSExETNxM2FDUUERQRExEUERMSEhIUNhMRFBETEhMRFBETEhM2ExITNhM2FDUUNhM2FDQVAA0FAAAAAAAAAAAAAAAA'

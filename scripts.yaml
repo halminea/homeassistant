@@ -1,5 +1,17 @@
 movie:
   sequence:
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - input_boolean.first_daytime
+      - input_boolean.first_evening
+      - input_boolean.first_morning
+      - input_boolean.first_night
+  - delay: '00:00:01'
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - switch.tradfri_outlet
   - service: light.turn_off
     data:
       entity_id: light.tradfri_bulb_5
@@ -56,6 +68,18 @@ movie_automation: # Automaatioversio, joka tekee asiat nopeammin, ettei yöllä 
 
 evening:
   sequence:
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - input_boolean.first_daytime
+      - input_boolean.first_evening
+      - input_boolean.first_morning
+      - input_boolean.first_night
+  - delay: '00:00:01'
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - switch.tradfri_outlet
   - service: light.turn_off
     data:
       entity_id: light.tradfri_bulb_5
@@ -108,6 +132,14 @@ evening_automation: # Automaatioversio. Muuten sama, mutta eteisen valo pysyy p�
 
 morning: 
   sequence:
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - input_boolean.first_daytime
+      - input_boolean.first_evening
+      - input_boolean.first_morning
+      - input_boolean.first_night
+  - delay: '00:00:01'
   - service: light.turn_on
     data:
       entity_id: light.tradfri_bulb
@@ -134,6 +166,18 @@ morning:
 
 daytime:
   sequence:
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - input_boolean.first_daytime
+      - input_boolean.first_evening
+      - input_boolean.first_morning
+      - input_boolean.first_night
+  - delay: '00:00:01'
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - switch.tradfri_outlet
   - service: light.turn_on
     data:
       entity_id:
@@ -160,7 +204,8 @@ livingroom_off:
       - light.tradfri_driver
       - switch.tradfri_outlet
       - light.tradfri_bulb_5
-      transition: 10
+      transition: 3
+  - service: script.tv_off
 
 livingroom_on:
   sequence:
@@ -170,3 +215,11 @@ livingroom_on:
       - light.tradfri_bulb
       - light.tradfri_bulb_2
 
+tv_off:
+  sequence:
+  - condition: state
+    entity_id:
+      - switch.tv
+    state: "on"
+  - service: switch.turn_off
+    entity_id: switch.tv

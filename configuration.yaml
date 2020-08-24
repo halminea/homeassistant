@@ -13,6 +13,16 @@ tts:
   - platform: google_translate
 lovelace: 
   mode: yaml
+  resources:
+  - type: js
+    url: /local/card-mod/card-mod.js?v=1
+  - type: module
+    url: /local/slider-entity-row/slider-entity-row.js?v=1
+  - type: js
+    url: /local/vertical-stack-in-card/vertical-stack-in-card.js?v=0.1.3
+  - url: /local/lovelace-time-picker-card/time-picker-card.js
+    type: module
+
 
 # Includet:
 automation: !include automations.yaml
@@ -23,13 +33,19 @@ scene: !include scene.yaml
 group: !include group.yaml
 sensor: !include sensor.yaml
 light: !include light.yaml
+switch: !include switch.yaml
+input_datetime: !include input_datetime.yaml
 homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
     - '/config'
 
-# Simple push
-notify:
-  - name: simplepush
-    platform: simplepush
-    device_key: K4jZhB
+# DNS:
+
+http:
+  base_url: “https://halminen.duckdns.org:8123”
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem 
+  ip_ban_enabled: true
+  login_attempts_threshold: 3 
+  

@@ -24,4 +24,7 @@ bright:
   name: bright
   entities:
   - switch.tradfri_outlet
-  
+amplifier:
+  name: amplifier
+  entities:
+  - swtich.tradfri_outlet_2

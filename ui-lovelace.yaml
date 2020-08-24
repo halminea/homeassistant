@@ -1,11 +1,3 @@
-resources:
-- type: js
-  url: /local/card-mod/card-mod.js?v=1
-- type: module
-  url: /local/slider-entity-row/slider-entity-row.js?v=1
-- type: js
-  url: /local/vertical-stack-in-card/vertical-stack-in-card.js?v=0.1.3
-
 views:
   - title: main
     icon: mdi:home-outline
@@ -68,6 +60,18 @@ views:
             hide_when_off: true
             full_row: true
             transition: 1
+          - entity: switch.tv # Television virtakytkin
+            name: televisio
+            icon: mdi:television
+          - entity: switch.tradfri_outlet_2 # Vahvistimen virtakytkin.
+            name: äänentoisto
+            icon: mdi:speaker
+          - type: custom:slider-entity-row
+            min: 0
+            max: 100
+            entity: cover.tradfri_blind
+            name: verho
+            icon: mdi-blinds
   
     - type: entities # Muut valot 
       title: muut valot
@@ -75,16 +79,16 @@ views:
       entities:
       - entity: light.tradfri_driver
         name: keittiö
-      - entity: light.tradfri_driver
-        type: custom:slider-entity-row
+      - type: custom:slider-entity-row
+        entity: light.tradfri_driver
         min: 1
         max: 100
         step: 1
         hide_when_off: true
         full_row: true
         transition: 1
-      - entity: switch.tradfri_outlet
-        name: kirkasvalolamppu
+ #     - entity: switch.tradfri_outlet
+  #      name: kirkasvalolamppu
       - entity: light.tradfri_bulb_5
         name: eteinen
   
@@ -161,3 +165,48 @@ views:
           name: lämpötila
         - entity: sensor.outside_dewpoint
           name: kastepiste
+
+    - type: custom:vertical-stack-in-card # sisäilman lämpötilatiedot
+      title: sisäilma
+      cards:
+      - type: entities # Numeeriset tiedot
+        show_header_toggle: false
+        entities:
+        - entity: sensor.inside_temperature
+          icon: mdi:thermometer
+          name: lämpötila
+        - entity: sensor.inside_humidity
+          icon: mdi:water-percent
+          name: suhteellinen kosteus
+        - entity: sensor.inside_pressure
+          icon: mdi:speedometer
+          name: ilmanpaine
+        - entity: sensor.inside_dewpoint
+          icon: mdi:coolant-temperature
+          name: kastepiste
+      - type: history-graph # graafi
+        refresh_interval: 30
+        entities:
+        - entity: sensor.inside_temperature
+          name: lämpötila
+        - entity: sensor.inside_dewpoint
+          name: kastepiste
+
+    - type: custom:vertical-stack-in-card # ilmastointi
+      title: ilmastointi
+      cards:
+      - type: entities
+        show_header_toggle: true
+        entities:
+        - entity: switch.tradfri_outlet
+          icon: mdi:air-conditioner
+          name: ilmastointilaite
+        - entity: switch.tradfri_outlet_3
+          icon: mdi:fan
+          name: tuulettimet
+        - entity: input_boolean.fan_time
+      - type: 'custom:time-picker-card'
+        entity: input_datetime.fan_time
+        hour_mode: 24
+        hide:
+          name: true

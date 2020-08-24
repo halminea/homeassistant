@@ -7,3 +7,6 @@
 [submodule "www/vertical-stack-in-card"]
 	path = www/vertical-stack-in-card
 	url = https://github.com/custom-cards/vertical-stack-in-card.git
+[submodule "www/lovelace-time-picker-card"]
+	path = www/lovelace-time-picker-card
+	url = https://github.com/GeorgeSG/lovelace-time-picker-card.git
