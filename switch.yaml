@@ -22,3 +22,13 @@
           data:
             host: 192.168.1.125
             packet: 'JgCMAJOTFDYTNhQ1FBETEhISFBETEhI3EzYUNhMRExITEhMRExITEhI3ExISEhMSEhMSEhMSEjcTEhI3FDUTNxM2FDUTNxMABgGTkxQ1FDYTNhQREhIUERMSExETNxM2FDUUERQRExEUERMSEhIUNhMRFBETEhMRFBETEhM2ExITNhM2FDUUNhM2FDQVAA0FAAAAAAAAAAAAAAAA'
+
+
+- platform: circadian_lighting
+  lights_ct:
+  - light.tradfri_bulb
+  - light.tradfri_bulb_2
+  - light.tradfri_bulb_3
+  - light.tradfri_bulb_4
+  name: circlight
+  

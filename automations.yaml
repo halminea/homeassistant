@@ -279,27 +279,7 @@
     data:
       entity_id: input_boolean.first_morning
 
-- id: '7'
-  alias: First morning # Valojen aamutilan sytytys
-  trigger: # Sytytettäessä olohuoneen valot
-    platform: state
-    entity_id: 
-    - light.tradfri_bulb
-    - light.tradfri_bulb_2
-    from: "off" # Tämä ei liene välttämätön rivi.
-    to: "on"
-  condition: # Vain, jos on aamun ensimmäinen
-    condition: state
-    entity_id: input_boolean.first_morning
-    state: 'on'
-  action:
-  - service: input_boolean.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa. 
-    entity_id: input_boolean.first_morning
-  - service: script.turn_on # Aktivoidaan valmis, erillinen aamuprofiiliskripti.
-    entity_id: script.morning
-
 - alias: Enable first daytime trigger  # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa päivällä
-  
   trigger:
     platform: time
     at: '10:00:00'
@@ -316,25 +296,6 @@
     service: input_boolean.turn_off
     data:
       entity_id: input_boolean.first_daytime
-
-- id: '8'
-  alias: First daytime # Valojen päivätilan sytytys
-  trigger: # Sytytettäessä olohuoneen valot
-    platform: state
-    entity_id: 
-    - light.tradfri_bulb
-    - light.tradfri_bulb_2
-    from: "off" # Tämä ei liene välttämätön rivi.
-    to: "on"
-  condition: # Vain, jos on päivän ensimmäinen
-    condition: state
-    entity_id: input_boolean.first_daytime
-    state: 'on'
-  action:
-  - service: input_boolean.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa. 
-    entity_id: input_boolean.first_daytime
-  - service: script.turn_on # Aktivoidaan valmis, erillinen aamuprofiiliskripti.
-    entity_id: script.daytime
 
 - alias: Enable first daytime trigger  # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa illalla
   
@@ -355,25 +316,7 @@
     data:
       entity_id: input_boolean.first_evening
 
-- id: '9'
-  alias: First evening # Valojen iltatilan sytytys
-  trigger: # Sytytettäessä olohuoneen valot
-    platform: state
-    entity_id: 
-    - light.tradfri_bulb
-    - light.tradfri_bulb_2
-    from: "off" # Tämä ei liene välttämätön rivi.
-    to: "on"
-  condition: # Vain, jos on illan ensimmäinen
-    condition: state
-    entity_id: input_boolean.first_evening
-    state: 'on'
-  action:
-  - service: input_boolean.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran illassa.  
-    entity_id: input_boolean.first_evening
-  - service: script.turn_on # Aktivoidaan valmis, erillinen iltaprofiiliskripti.
-    entity_id: script.evening_automation
-  
+
 - alias: Enable first night trigger  # Käytetään selvittämään, laitetaanko lamput päälle ensimmäistä kertaa yöllä
   
   trigger:
@@ -392,25 +335,6 @@
     service: input_boolean.turn_off
     data:
       entity_id: input_boolean.first_night
-
-- id: '10'
-  alias: First night # Valojen sytytys elokuvatilaan öisin.
-  trigger: # Sytytettäessä olohuoneen valot
-    platform: state
-    entity_id: 
-    - light.tradfri_bulb
-    - light.tradfri_bulb_2
-    from: "off" # Tämä ei liene välttämätön rivi.
-    to: "on"
-  condition: # Vain, jos on yön ensimmäinen
-    condition: state
-    entity_id: input_boolean.first_night
-    state: 'on'
-  action:
-  - service: input_boolean.turn_off # Laitetaan "odotusmuuttuja" pois, jotta tapahtuu vain kerran aamussa. 
-    entity_id: input_boolean.first_night
-  - service: script.turn_on # Aktivoidaan valmis, yöskripti.
-    entity_id: script.movie_automation
 
 - id: "11" # Sammuttaa kirkasvalolampun, kun olohuoneen valot sammutetaan.
   alias: bright_off

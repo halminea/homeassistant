@@ -49,3 +49,4 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 3 
   
+circadian_lighting:
