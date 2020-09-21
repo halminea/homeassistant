@@ -184,7 +184,7 @@
     platform: state
     to: "on"
   condition: # Suoritetaan vain, jos olohuoneen valo on päällä
-  - condition: "state"
+  - condition: state
     entity_id: light.tradfri_bulb
     state: "on"
   action: # Laitetaan valo samalle teholle ja värilämpotilalle
