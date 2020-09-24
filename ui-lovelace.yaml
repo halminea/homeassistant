@@ -87,8 +87,8 @@ views:
         hide_when_off: true
         full_row: true
         transition: 1
- #     - entity: switch.tradfri_outlet
-  #      name: kirkasvalolamppu
+      - entity: switch.tradfri_outlet
+        name: kirkasvalolamppu
       - entity: light.tradfri_bulb_5
         name: eteinen
   
@@ -191,22 +191,3 @@ views:
           name: lämpötila
         - entity: sensor.inside_dewpoint
           name: kastepiste
-
-    - type: custom:vertical-stack-in-card # ilmastointi
-      title: ilmastointi
-      cards:
-      - type: entities
-        show_header_toggle: true
-        entities:
-        - entity: switch.tradfri_outlet
-          icon: mdi:air-conditioner
-          name: ilmastointilaite
-        - entity: switch.tradfri_outlet_3
-          icon: mdi:fan
-          name: tuulettimet
-        - entity: input_boolean.fan_time
-      - type: 'custom:time-picker-card'
-        entity: input_datetime.fan_time
-        hour_mode: 24
-        hide:
-          name: true
