@@ -11,14 +11,16 @@
       turn_on:
         - service: input_boolean.turn_on
           entity_id: input_boolean.tv
-        - service: broadlink.send
+        - service: remote.send_command
           data:
-            host: 192.168.1.125
-            packet: 'JgCMAJOTFDYTNhQ1FBETEhISFBETEhI3EzYUNhMRExITEhMRExITEhI3ExISEhMSEhMSEhMSEjcTEhI3FDUTNxM2FDUTNxMABgGTkxQ1FDYTNhQREhIUERMSExETNxM2FDUUERQRExEUERMSEhIUNhMRFBETEhMRFBETEhM2ExITNhM2FDUUNhM2FDQVAA0FAAAAAAAAAAAAAAAA'
+            entity_id: remote.broadlink_remote
+            device: tv
+            command: power
       turn_off:
         - service: input_boolean.turn_off
           entity_id: input_boolean.tv
-        - service: broadlink.send
+        - service: remote.send_command
           data:
-            host: 192.168.1.125
-            packet: 'JgCMAJOTFDYTNhQ1FBETEhISFBETEhI3EzYUNhMRExITEhMRExITEhI3ExISEhMSEhMSEhMSEjcTEhI3FDUTNxM2FDUTNxMABgGTkxQ1FDYTNhQREhIUERMSExETNxM2FDUUERQRExEUERMSEhIUNhMRFBETEhMRFBETEhM2ExITNhM2FDUUNhM2FDQVAA0FAAAAAAAAAAAAAAAA'
+            entity_id: remote.broadlink_remote
+            device: tv
+            command: power
