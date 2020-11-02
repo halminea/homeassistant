@@ -188,3 +188,14 @@ views:
           name: lämpötila
         - entity: sensor.inside_dewpoint
           name: kastepiste
+
+    - type:  custom:vertical-stack # Herätysaika
+      title: Herätys
+      cards:
+          - type entities:
+            show_header_toggle: false
+            entities:
+              - entity: input_boolean.wake_up_lights
+                icon: mdi:alarm-light-outline
+              - entity: input_datetime.wake_up_time
+                icon: mdi:clock-time-three-outline

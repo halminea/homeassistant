@@ -2,3 +2,7 @@ fan_time:
     name: Fan time
     has_date: false
     has_time: true
+wake_up_time:
+    name: Herästysaika
+    has_date: false
+    hast_time: true
