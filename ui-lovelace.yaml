@@ -192,7 +192,7 @@ views:
     - type:  vertical-stack # Herätysaika
       title: Herätys
       cards:
-          - type entities:
+          - type: entities
             show_header_toggle: false
             entities:
               - entity: input_boolean.wake_up_lights
