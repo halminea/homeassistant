@@ -189,7 +189,7 @@ views:
         - entity: sensor.inside_dewpoint
           name: kastepiste
 
-    - type:  custom:vertical-stack # Herätysaika
+    - type:  vertical-stack # Herätysaika
       title: Herätys
       cards:
           - type entities:
