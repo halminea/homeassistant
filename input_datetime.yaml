@@ -5,4 +5,4 @@ fan_time:
 wake_up_time:
     name: Herästysaika
     has_date: false
-    hast_time: true
+    has_time: true
