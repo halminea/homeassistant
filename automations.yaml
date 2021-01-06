@@ -439,7 +439,7 @@
     entity_id: sensor.sauna_temperature
     above: 65
   action:
-    service: notify.mobile_app_moto_g_7
+    service: notify.mobile_app_ac2003
     data:
       message: "Saunan lämpötila on {{ states.sensor.sauna_temperature.state }} ja kosteus {{ states.sensor.sauna_humidity.state }} %"
       title: "Sauna lämmin."
@@ -481,7 +481,7 @@
   alias: leaving_home_notification
   trigger:
     platform: state
-    entity_id: device_tracker.moto_g_7
+    entity_id: device_tracker.ac2003
     to: "not_home"
     for: '00:03:00'
   condition:
@@ -509,7 +509,7 @@
         entity_id: switch.tv
         state: "on"
   action:
-    service: notify.mobile_app_moto_g_7
+    service: notify.mobile_app_ac2003
     data:
       message: "Joitakin laitteita on päällä."
       data:
@@ -548,10 +548,10 @@
     to: "on"
   condition:
     condition: state
-    entity_id: device_tracker.moto_g_7
+    entity_id: device_tracker.ac2003
     state: "not_home"
   action:
-    - service: notify.mobile_app_moto_g_7
+    - service: notify.mobile_app_ac2003
       data:
         message: "Makuuhuoneen valot syttyivät"
         data:
