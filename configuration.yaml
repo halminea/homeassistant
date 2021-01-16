@@ -50,3 +50,5 @@ http:
   login_attempts_threshold: 3 
   
  hdmi_cec: 
+  devices:
+    tv: 0.0.0.0
