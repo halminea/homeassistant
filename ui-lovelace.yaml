@@ -60,7 +60,7 @@ views:
             hide_when_off: true
             full_row: true
             transition: 1
-          - entity: switch.hdmi_0 # Television virtakytkin
+          - entity: switch.tv # Television virtakytkin
             name: televisio
             icon: mdi:television
           - entity: switch.tradfri_outlet_2 # Vahvistimen virtakytkin.
