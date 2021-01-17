@@ -448,7 +448,7 @@
   alias: tv_to_amp_on
   trigger:
     platform: state
-    entity_id: switch.tv
+    entity_id: switch.hdmi_0
     to: "on"
   condition: # Ei tehdä mitään, jos vahvistin on jo päällä 
     condition: state
@@ -465,7 +465,7 @@
   alias: tv_to_amp_off
   trigger:
     platform: state
-    entity_id: switch.tv
+    entity_id: switch.hdmi_0
     to: "off"
   condition: # Vain jos vahvistin on laitettu TV:n kanssa päälle. 
     condition: state
@@ -506,7 +506,7 @@
         entity_id: light.tradfri_bulb_4
         state: "on"
       - condition: state
-        entity_id: switch.tv
+        entity_id: switch.hdmi_0
         state: "on"
   action:
     service: notify.mobile_app_ac2003
