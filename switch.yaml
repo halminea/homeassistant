@@ -4,7 +4,7 @@
   mac: 78:0F:77:4F:80:C4
 
 # TV-hallinta
-- platform: templatet
+- platform: template
   switches:
     tv:
       value_template: "{{switch.hdmi_0}}"
