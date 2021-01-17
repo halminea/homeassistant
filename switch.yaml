@@ -4,10 +4,10 @@
   mac: 78:0F:77:4F:80:C4
 
 # TV-hallinta
-- platform: template
+- platform: templatet
   switches:
     tv:
-      value_template: "{{ is_state('switch.hdmi_0', 'on') }}"
+      value_template: "{{switch.hdmi_0}}"
       turn_on:
         - service: hdmi_cec.power_on
       turn_off:
