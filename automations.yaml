@@ -448,7 +448,7 @@
   alias: tv_to_amp_on
   trigger:
     platform: state
-    entity_id: switch.hdmi_0
+    entity_id: switch.tv
     to: "on"
   condition: # Ei tehdä mitään, jos vahvistin on jo päällä 
     condition: state
@@ -465,7 +465,7 @@
   alias: tv_to_amp_off
   trigger:
     platform: state
-    entity_id: switch.hdmi_0
+    entity_id: switch.tv
     to: "off"
   condition: # Vain jos vahvistin on laitettu TV:n kanssa päälle. 
     condition: state

@@ -7,7 +7,7 @@
 - platform: template
   switches:
     tv:
-      value_template: "{{ is_state('input_boolean.tv', 'on') }}"
+      value_template: "{{ is_state('switch.hdmi_0', 'on') }}"
       turn_on:
         - service: hdmi_cec.power_on
       turn_off:
