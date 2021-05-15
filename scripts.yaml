@@ -15,7 +15,6 @@ movie:
   - service: light.turn_off
     data:
       entity_id: light.tradfri_bulb_5
-      transition: 1
   - service: light.turn_on
     data:
       entity_id: light.tradfri_bulb
@@ -43,7 +42,6 @@ movie_automation: # Automaatioversio, joka tekee asiat nopeammin, ettei yöllä 
   - service: light.turn_off
     data:
       entity_id: light.tradfri_bulb_5
-      transition: 1
   - service: light.turn_on
     data:
       entity_id: light.tradfri_bulb
@@ -83,7 +81,6 @@ evening:
   - service: light.turn_off
     data:
       entity_id: light.tradfri_bulb_5
-      transition: 1
   - service: light.turn_on
     data:
       entity_id: light.tradfri_bulb
@@ -204,7 +201,6 @@ livingroom_off:
       - light.tradfri_driver
       - switch.tradfri_outlet
       - light.tradfri_bulb_5
-      transition: 3
   - service: script.tv_off
 
 livingroom_on:

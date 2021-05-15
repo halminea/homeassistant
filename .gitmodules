@@ -10,3 +10,6 @@
 [submodule "www/lovelace-time-picker-card"]
 	path = www/lovelace-time-picker-card
 	url = https://github.com/GeorgeSG/lovelace-time-picker-card.git
+[submodule "custom_components/ruuvi-hassio"]
+	path = custom_components/ruuvi-hassio
+	url = https://github.com/ruuvi-friends/ruuvi-hass.io

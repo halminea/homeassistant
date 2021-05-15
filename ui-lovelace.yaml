@@ -66,9 +66,16 @@ views:
           - entity: switch.tradfri_outlet_2 # Vahvistimen virtakytkin.
             name: äänentoisto
             icon: mdi:speaker
-          - entity: input_boolean.light_autom
-            name: valoautomatiikka
-            icon: mdi:home-lightbulb
+          - type: custom:slider-entity-row
+            entity: cover.tradfri_blind
+            attribute: position
+            name: verhot
+            min: 0
+            max: 100
+            step: 1
+            hide_when_off: false
+            full_row: false
+            icon: mdi:blinds
   
     - type: entities # Muut valot 
       title: muut valot
@@ -189,8 +196,8 @@ views:
         - entity: sensor.inside_dewpoint
           name: kastepiste
 
-    - type:  vertical-stack # Herätysaika
-      title: Herätys
+    - type:  custom:vertical-stack-in-card # Herätysaika
+      title: herätys
       cards:
           - type: entities
             show_header_toggle: false

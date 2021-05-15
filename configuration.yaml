@@ -52,3 +52,8 @@ http:
 hdmi_cec: 
   devices:
     tv: 0.0.0.0
+
+notify:
+  - name: AC2003
+    platform: simplepush
+    device_key: KuTwrr
